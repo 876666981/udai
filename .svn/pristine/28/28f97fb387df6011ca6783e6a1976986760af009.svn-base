@@ -1,0 +1,42 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Admin extends Controller{
+		public function admin_list(){
+			$arr=input('get.');
+			$sex=input('get.sex');
+			$admin_name=input('get.admin_name');
+			$pageParam=['query'=>[]];
+			$where=array();
+			if ($sex) {
+				$where['sex']=array('like',"%{$sex}%");
+				$this->assign('sex',$sex);
+				$pageParam['query']['sex']=$sex;
+			}
+			if ($admin_name) {
+				$where['admin_name']=array('like',"%{$admin_name}%");
+				$this->assign('admin_name',$admin_name);
+				$pageParam['query']['admin_name']=$admin_name;
+			}
+			$list=db('admin')->where($where)->order('id desc')->paginate(3,"",$pageParam);
+			$page=$list->render();
+			$this->assign('page',$page);
+			$this->assign('list',$list);
+			return view();
+		}
+		public function admin_add(){
+			return view();
+		}
+		public function admin_edit(){
+			return view();
+		}
+		public function admin_cate(){
+			return view();
+		}
+		public function admin_role(){
+			return view();
+		}
+		public function admin_rule(){
+			return view();
+		}
+	}

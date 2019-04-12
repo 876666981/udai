@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+             U袋网后台
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="__STATIC__/admin/css/x-admin.css" media="all">
+    </head>
+    <body>
+        <div class="x-body">
+            <blockquote class="layui-elem-quote">
+                欢迎进入U袋网后台！<span class="f-14"></span>本网交流群： 1348399000
+            </blockquote>
+            <p>登录次数：{$num}</p>
+            <p>上次登录IP：{$IP} </p>
+            <fieldset class="layui-elem-field layui-field-title site-title">
+              <legend><a name="default">信息统计</a></legend>
+            </fieldset>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>统计</th>
+                        <th>评论库</th>
+                        <th>图片库</th>
+                        <th>产品库</th>
+                        <th>用户</th>
+                        <th>管理员</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>总数</td>
+                        <td>{$comment}</td>
+                        <td>{$filenum}</td>
+                        <td>{$product}</td>
+                        <td>{$member}</td>
+                        <td>{$admin}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th colspan="2" scope="col">服务器信息</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th width="30%">服务器计算机名</th>
+                        <td><span id="lbServerName">{$Fname}</span></td>
+                    </tr>
+                    <tr>
+                        <td>服务器IP地址</td>
+                        <td>{$FIP}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器域名</td>
+                        <td>{$FY}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器端口 </td>
+                        <td>{$FD}</td>
+                    </tr>
+                    <tr>
+                        <td>本文件所在文件夹 </td>
+                        <td>{$WJ}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器操作系统 </td>
+                        <td>{$FC}</td>
+                    </tr>
+                    <tr>
+                        <td>系统所在文件夹 </td>
+                    </tr>
+                    <tr>
+                        <td>服务器脚本超时时间 </td>
+                        <td>{$overtime}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器的语言种类 </td>
+                        <td>{$language}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器当前时间 </td>
+                        <td>{$newtime}</td>
+                    </tr>
+                    <tr>
+                        <td>服务器IE版本 </td>
+                        <td>{$IE}</td>
+                    </tr>
+                    <tr>
+                        <td>虚拟内存 </td>
+                        <td>{$virtual}</td>
+                    </tr>
+                    <tr>
+                        <td>当前程序占用内存 </td>
+                        <td>{$usen}</td>
+                    </tr>
+                    <tr>
+                        <td>当前SessionID </td>
+                        <td>{$sesid}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-footer footer footer-demo">
+            <div class="layui-main">
+                <p>欢迎来到U袋网后台</p>
+               <p>福鼎市维捷投资有限公司致力于打造国内最专业的货源平台</p>
+            </div>
+        </div>
+        <script src="__STATIC__/admin/lib/layui/layui.js" charset="utf-8"></script>
+        <script src="__STATIC__/admin/js/x-admin.js"></script>
+    </body>
+</html>

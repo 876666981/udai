@@ -1,0 +1,351 @@
+---------------------------------------------------------------
+[ 2018-06-04T14:58:07+08:00 ] 127.0.0.1 GET /index.php/admin/member/list
+[ error ] [4]语法错误: unexpected 'list' (T_LIST), expecting identifier (T_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T14:59:31+08:00 ] 127.0.0.1 GET /index.php/admin/member/list
+[ error ] [4]语法错误: unexpected 'list' (T_LIST), expecting identifier (T_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T14:59:47+08:00 ] 127.0.0.1 GET /index.php/admin/member/list
+[ error ] [4]语法错误: unexpected 'list' (T_LIST), expecting identifier (T_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T15:00:03+08:00 ] 127.0.0.1 GET /index.php/admin/member/list
+[ error ] [4]语法错误: unexpected 'list' (T_LIST), expecting identifier (T_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T15:00:59+08:00 ] 127.0.0.1 GET /index.php/admin/member/list
+[ error ] [4]语法错误: unexpected 'list' (T_LIST), expecting identifier (T_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T15:17:41+08:00 ] 127.0.0.1 GET /index.php/admin/member/list
+[ error ] [4]语法错误: unexpected 'list' (T_LIST), expecting identifier (T_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T16:32:46+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ error ] [4]语法错误: unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T16:45:36+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ error ] [4]语法错误: unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T16:45:45+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ error ] [4]语法错误: unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+---------------------------------------------------------------
+[ 2018-06-04T16:50:36+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ error ] [8]未定义变量: num
+---------------------------------------------------------------
+[ 2018-06-04T16:53:44+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ error ] [8]未定义变量: num
+---------------------------------------------------------------
+[ 2018-06-04T16:54:14+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ error ] [8]未定义变量: num
+---------------------------------------------------------------
+[ 2018-06-04T16:55:42+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] www.gejianghua.cn/index.php/admin/index/index [运行时间：0.389023s][吞吐率：2.57req/s] [内存消耗：3,008.22kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102454',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp64\www\thinphp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:55:44+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome
+[ info ] www.gejianghua.cn/index.php/admin/index/welcome [运行时间：0.182010s][吞吐率：5.49req/s] [内存消耗：3,000.55kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/index/index',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102454',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ D:\wamp64\www\thinphp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:55:48+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ info ] www.gejianghua.cn/index.php/admin/goods/goodslist [运行时间：0.237014s][吞吐率：4.22req/s] [内存消耗：3,177.42kb] [文件加载：50]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'goods',
+    2 => 'goodslist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/index/index',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102546',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Goods->goodslist[ D:\wamp64\www\thinphp5\application\admin\controller\Goods.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\goods\goodslist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+[ error ] [8]未定义变量: num[D:\wamp64\www\thinphp5\runtime\temp\b96c7574d0dab9f0090c8237c0925239.php:41]
+---------------------------------------------------------------
+[ 2018-06-04T16:56:17+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] www.gejianghua.cn/index.php/admin/index/index [运行时间：0.178010s][吞吐率：5.62req/s] [内存消耗：3,008.23kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102546',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ D:\wamp64\www\thinphp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:18+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome
+[ info ] www.gejianghua.cn/index.php/admin/index/welcome [运行时间：0.200012s][吞吐率：5.00req/s] [内存消耗：3,000.98kb] [文件加载：44]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/index/index',
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102546',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ D:\wamp64\www\thinphp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:20+08:00 ] 127.0.0.1 GET /index.php/admin/goods/goodslist
+[ info ] www.gejianghua.cn/index.php/admin/goods/goodslist [运行时间：0.332019s][吞吐率：3.01req/s] [内存消耗：3,349.92kb] [文件加载：48]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'goods',
+    2 => 'goodslist',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/index/index',
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102580',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Goods->goodslist[ D:\wamp64\www\thinphp5\application\admin\controller\Goods.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\goods\goodslist.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:20+08:00 ] 127.0.0.1 GET /index.php/admin/include/js/x-layui.js
+[ info ] www.gejianghua.cn/index.php/admin/include/js/x-layui.js [运行时间：0.247014s][吞吐率：4.05req/s] [内存消耗：2,633.48kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'include',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/goods/goodslist',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102580',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:20+08:00 ] 127.0.0.1 GET /index.php/admin/include/lib/layui/layui.js
+[ info ] www.gejianghua.cn/index.php/admin/include/lib/layui/layui.js [运行时间：0.288016s][吞吐率：3.47req/s] [内存消耗：2,634.26kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'include',
+    2 => 'lib',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/goods/goodslist',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102580',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  'layui' => 'layui.js',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:21+08:00 ] 127.0.0.1 GET /index.php/admin/include/css/x-admin.css
+[ info ] www.gejianghua.cn/index.php/admin/include/css/x-admin.css [运行时间：0.277016s][吞吐率：3.61req/s] [内存消耗：2,633.62kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'include',
+    2 => 'css',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/css,*/*;q=0.1',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/goods/goodslist',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102580',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:21+08:00 ] 127.0.0.1 GET /index.php/admin/include/js/x-layui.js
+[ info ] www.gejianghua.cn/index.php/admin/include/js/x-layui.js [运行时间：0.134007s][吞吐率：7.46req/s] [内存消耗：2,633.59kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'include',
+    2 => 'js',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/goods/goodslist',
+  'cookie' => 'pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102580',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-04T16:56:24+08:00 ] 127.0.0.1 GET /index.php/admin/index/category.html
+[ info ] www.gejianghua.cn/index.php/admin/index/category.html [运行时间：0.167010s][吞吐率：5.99req/s] [内存消耗：2,627.90kb] [文件加载：41]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'category',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.gejianghua.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.gejianghua.cn/index.php/admin/index/index',
+  'cookie' => 'thinkphp_show_page_trace=0|0; pgv_pvi=9458281472; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1528081043,1528093915; pgv_si=s7627261952; Hm_lpvt_b393d153aeb26b46e9431fabaf0f6190=1528102580',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File

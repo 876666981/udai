@@ -1,0 +1,108 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp64\www\thinphp5\public/../application/admin\view\admin\role_edit.html";i:1528978703;}*/ ?>
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            X-admin v1.0
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="/static/admin/css/x-admin.css" media="all">
+    </head>
+    
+    <body>
+        <div class="x-body">
+              <form action="" method="post" class="layui-form layui-form-pane" onsubmit="return doupdate(this)">
+                <input type="hidden" name="id" value="<?php echo $arr['id']; ?>">
+                <div class="layui-form-item">
+                    <label for="name" class="layui-form-label">
+                        <span class="x-red">*</span>角色名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required="" lay-verify="required" value="<?php echo $arr['title']; ?>" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                  <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                        <?php if($arr['status']=='on'): ?>
+                        <input type="checkbox" name="status" lay-skin="switch" checked>
+                        <?php else: ?>
+                        <input type="checkbox" name="status" lay-skin="switch">
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                  <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="200">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                              <th>配置权限</th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                            <tr>
+                              <td>
+                                <?php if(in_array(($vo['id']), is_array($arr['rules'])?$arr['rules']:explode(',',$arr['rules']))): ?>
+                                <input type="checkbox"  dataid="id-<?php echo $vo['dataid']; ?>" name="rules[]" class="checkbox-parent <?php if($vo['level'] != 0): ?> checkbox-child<?php endif; ?>" value="<?php echo $vo['id']; ?>" lay-filter="filter" checked><span <?php if($vo['level'] == 0): ?> style="font-size:16px;font-weight:bold;" <?php endif; ?> class="text"><?php echo $vo['title']; ?></span>
+                                <?php else: ?>
+                                <input type="checkbox"  dataid="id-<?php echo $vo['dataid']; ?>" name="rules[]" class="checkbox-parent <?php if($vo['level'] != 0): ?> checkbox-child<?php endif; ?>" value="<?php echo $vo['id']; ?>" lay-filter="filter"><span <?php if($vo['level'] == 0): ?> style="font-size:16px;font-weight:bold;" <?php endif; ?> class="text"><?php echo $vo['title']; ?></span>
+                                <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-form-item">
+                <input class="layui-btn" lay-submit="" lay-filter="save" type="submit" value="保存">
+              </div>
+            </form>
+        </div>
+        <script src="/static/admin/lib/layui/layui.js" charset="utf-8">
+        </script>
+        <script src="/static/admin/js/x-layui.js" charset="utf-8">
+        </script>
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+            });
+             function doupdate(myform){
+                $.ajax({
+                    url:'roleupdate',
+                    type:'post',
+                    data:$(myform).serialize(),
+                    dataType:'json',
+                    async:true,
+                    success:function(data){
+                       if (data>0) {
+                            layer.msg('修改成功');
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            window.parent.location.reload();
+                        }
+                    },
+                    error:function(){
+                        layer.msg('修改失败');
+                    }
+                });
+                return false;
+            }
+        </script>
+    </body>
+
+</html>

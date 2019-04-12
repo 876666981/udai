@@ -1,0 +1,80 @@
+<?php
+	namespace app\admin\controller;
+	use think\Session;
+	use think\Controller;
+	use think\Request;
+	use think\Config;
+	use app\admin\controller\Common;
+	use think\Validate;
+	use app\admin\validate\User;
+	class Member extends Common{
+		public function member_list(){
+			$arr=input('get.');
+			$sex=input('get.sex');
+			$phone=input('get.phone');
+			$pageParam=['query'=>[]];
+			$where=array();
+			if ($sex) {
+				$where['sex']=array('like',"%{$sex}%");
+				$this->assign('sex',$sex);
+				$pageParam['query']['sex']=$sex;
+			}
+			if ($phone) {
+				$where['phone']=array('like',"%{$phone}%");
+				$this->assign('phone',$phone);
+				$pageParam['query']['phone']=$phone;
+			}
+			// $list=db('user')->where($where)->order('id desc')->select();
+			$list=db('user')->where($where)->order('id desc')->paginate(4,"",$pageParam);
+			$list['time']=time();
+			$totol =db('user')->count('id');
+			$page = $list->render();
+			$this->assign("page", $page);
+			$this->assign("totol", $totol);
+			$this->assign("list", $list);
+			// var_dump($list);
+			return view();
+		}
+		public function member_add(){
+			return view("");
+		}
+		public function member_edit(){
+			return view("");
+		}
+		public function member_show(){
+			$id=input('id');
+			$list['time']=time();
+      		$list=db('user')->find($id);
+      		$list['time']=time();
+         	$this->assign("list",$list);
+			return view();
+		}
+		public function insert(){
+			 $list=input('post.');
+ 			$result = $this->validate($list,'User');
+ 			if(true !== $result){
+    			// 验证失败 输出错误信息
+    			return ($result);
+			}
+			 if($list['password'] == $list['repass']){
+			 	 unset($list['repass']);
+				 $list['password']=md5($list['password']);
+				 $list['time']=time();
+				 $m=db("user")->where('state',1)->insert($list);
+				 return $m;	
+			}
+			 
+		}
+		public function state(){
+			$id=input('id');
+			$list=db('user')->where('id',$id)->find();
+			if($list['state'] == '1'){
+				$num=db('user')->where('id',$id)->update(['state' => '2']);
+				return  $num;
+			}else{
+				$num=db('user')->where('id',$id)->update(['state' => '1']);
+				return  $num;
+			}
+		}
+	
+	}

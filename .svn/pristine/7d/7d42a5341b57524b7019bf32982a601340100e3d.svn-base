@@ -1,0 +1,17 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Goods extends Controller{
+		public function goodslist(){
+			return view();
+		}
+		public function goodsadd(){
+			return view();
+		}
+		public function goodsedit(){
+			return view();
+		}
+		public function category(){
+			return view();
+		}
+	}

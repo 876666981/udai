@@ -1,0 +1,19 @@
+<?php
+	namespace app\admin\controller;
+	use think\Session;
+	use think\Controller;
+	use think\Request;
+	use think\Config;
+	use app\admin\controller\Common;
+	class Index extends Common{
+		public function index(){
+			if (empty(Session::has('admin_name'))) {	//判断session是否为空
+				$this->redirect('admin/login/index');	//重定向
+			}else{
+				return view();
+			}
+		}
+		public function welcome(){
+			return view();
+		}
+}

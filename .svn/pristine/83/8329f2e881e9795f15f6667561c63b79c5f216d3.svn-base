@@ -1,0 +1,275 @@
+<?php
+namespace app\index\controller;
+use think\Controller;
+use think\Request;
+use think\Config;
+use think\Session;
+class Personal extends Controller
+{
+    protected $beforeActionList = [
+        'first'
+    ];
+    public function first(){
+         if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+        }
+    }
+    public function udai_setting(){
+        $id=Session::get('id');
+        $user=db('user')->where("id",$id)->find();
+        $this->assign("user",$user);
+        return view();
+    }
+    public function udai_update(){
+        $list=input('post.');
+        $m=db('user')->update($list);
+        return $m;
+    }
+    public function head_update(){
+        $file=$this->request->file("imgname");
+        $id=input('id');
+        $info=$file->move(ROOT_PATH . 'public' . DS . 'static/index/head');
+        if($info){
+            return $k=$info->getSaveName();
+        }else{
+            return $file->getError();
+        }
+    }
+    public function udai_dofeil(){
+        $id=Session::get('id');
+        $pic=db('user')->where('id',$id)->find();
+        $img=input("post.");
+        $m=db('user')->where('id',$id)->update(['imgname'=>$img['img']]);
+        if ($m>0) {
+           if (file_exists($pic['imgname'])) {
+                unlink($pic['imgname']); 
+           }
+           return $m;
+        }
+    }
+    public function udai_treasurer(){
+    	return view();
+    }
+    public function udai_integral(){
+    	return view();
+    }
+    public function udai_address(){
+        $id=Session::get('id');
+        $list=db('address')->where('pid',$id)->select();
+        $this->assign('list',$list);
+    	return view();
+    }
+    public function add_address(){
+        $list=input("post.");
+        $m=db('address')->insert($list);
+        return $m;
+    }
+    public function udai_editaddress(Request $res){
+        $id=Session::get('id');
+        $list=db('address')->where('pid',$id)->select();
+        $this->assign('list',$list);
+        $info=db('address')->find($res->param('id'));
+        $this->assign("info",$info);
+          if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+            $this->assign('dcdl','点此登录');
+            $this->assign('nhao','你好');
+            $this->assign('jf','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+            $this->assign('dcdl','');
+            $this->assign('nhao','');
+            $this->assign('jf','积分');
+        }
+        return view();
+    }
+    public function udai_updateaddress(){
+        $list=input("post.");
+        $m=db("address")->where("id",$list['id'])->update($list);
+        return $m;
+    }
+    public function udai_del(){
+            $id=input('id');
+            $m=db('address')->delete($id);
+            return $m;
+    }
+    public function default_address(){
+        $id=input('id');
+        $pid=Session::get('id');
+        $m=db("address")->where("id",$id)->update(['default'=>'2']);
+        $this->redirect('index/personal/udai_address');
+        return $m;
+             $this->redirect('index/personal/udai_address');
+    }
+    public function udai_coupon(){
+    	return view();
+    }
+    public function udai_paypwd_modify(){
+    	return view();
+    }
+    public function udai_pwd_modify(){
+    	return view();
+    }
+    public function udai_collection(){
+            if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+        }
+            $id=Session::get('id');
+        $controller=db('Collection')->where('pid',$id)->select();
+        $this->assign('controller',$controller);
+    	return view();
+    }
+    public function udai_order(){
+        $phone=Session::get('phone');
+        $list=db('user')->where('phone',$phone)->find();
+        $order=db('order')->where('uid',$list['id'])->where('strike',0)->select();
+        $arr=array();
+        foreach ($order as $key => $value) {
+            $arr[]=db('detail')->where('orderid',$value['id'])->select();
+        }
+        $as=array();
+        foreach ($arr as $key => $value) {
+            foreach ($value as $k => $v) {
+                $as[]=$v;
+            }
+        }
+        $this->assign('order',$order);
+        $this->assign('as',$as);
+    	return view();
+    }
+    public function order_detail(){
+
+    }
+    public function order_shouhuo(){
+        $id=input('id');
+        $m=db("order")->where("id",$id)->update(['state'=>3]);
+        return $m;
+    }
+    public function order_del(){
+        $id=input('id');
+        $m=db("order")->where("id",$id)->update(['strike'=>1]);
+        if ($m>0) {
+            $arr=db('detail')->where('orderid',$id)->select();
+            foreach ($arr as $key => $value) {
+                $agoods=db('goods')->where("id",$value['goodsid'])->find();
+                $stock=$agoods['stock']+$value['num'];
+                $list=db('goods')->where("id",$value['goodsid'])->update(['stock'=>$stock]);
+            }
+           return $m; 
+        }
+    }
+    public function order_delete(){
+        $id=input('id');
+        $m=db("order")->where("id",$id)->update(['strike'=>1]);
+        return $m;
+    }
+    public function udai_comment(){
+        $phone=Session::get('phone');
+        $uarr=db('user')->where('phone',$phone)->find();
+        $id=input('id');
+        $list=db('order')->where('id',$id)->find();
+        $arr=db('detail')->where('orderid',$list['id'])->select();
+        $this->assign('list',$list);
+        $this->assign('arr',$arr);
+        $this->assign('uarr',$uarr);
+        return view();
+    }
+    public function udai_docom(){   
+        $list=input('post.');
+        $arr=$list['arr'];
+        $arr2=$list['arr2'];
+        for ($i=0; $i <count($arr); $i++) { 
+            $list['goodsid']=$arr2[$i];
+            $list['content']=$arr[$i];
+            $list['createTime']=time();
+            unset($list['arr']);
+            unset($list['arr2']);
+            $m=db('evaluate')->insert($list);
+        }
+        if ($m>0) {
+            $a=db('order')->where('id',$list['orderid'])->update(['state'=>4]);
+        }
+        return $m;
+    }
+    public function udai_refund(){
+    	return view();
+    }
+    public function udai_mail_query(){
+    	return view();
+    }
+     public function udai_modifypay_step1(){
+    	return view();
+    }
+    public function sendCode(){
+        $tel=input('tel');
+        // echo $tel;
+        $host = "https://feginesms.market.alicloudapi.com";
+        $path = "/codeNotice";
+        $method = "GET";
+        $appcode = "4a53f8c8d15b403595c6ea288c940c4d";
+        $headers = array();
+        array_push($headers, "Authorization:APPCODE " . $appcode);
+        $querys = "param=".code()."&phone={$tel}&sign=1&skin=1";
+        $bodys = "";
+        $url = $host . $path . "?" . $querys;
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_FAILONERROR, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        if (1 == strpos("$".$host, "https://"))
+        {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        }
+        // var_dump(curl_exec($curl));
+        $json=curl_exec($curl);
+        $info=json_decode($json,true);
+        // echo $info;
+        if ($info['Code']=='OK') {
+            return 1;
+        }
+    }
+    public function udai_modifypay_step2(){
+        return view();
+    }
+    public function udai_modifypay_step3(){
+        return view();
+    }
+    public function dopass(){
+        $phone=Session::get('phone');
+        $pass=input('post.');
+        if ($pass['password']==$pass['repassword']) {
+            $m=db('user')->where('phone',$phone)->update(['password'=>$pass['password']]);
+        }
+        return $m;
+    }
+    public function udai_article10(){
+        return view();
+    }
+    public function udai_article11(){
+        return view();
+    }
+    public function udai_article12(){
+        return view();
+    }
+}

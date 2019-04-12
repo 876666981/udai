@@ -1,0 +1,11 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Comment extends Controller{
+		public function comment_list(){
+			return view();
+		}
+		public function feedback_list(){
+			return view();
+		}
+	}

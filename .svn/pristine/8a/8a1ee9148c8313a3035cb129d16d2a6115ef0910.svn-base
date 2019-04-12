@@ -1,0 +1,17 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Question extends Controller{
+		public function questionlist(){
+			return view();
+		}
+		public function questionadd(){
+			return view();
+		}
+		public function questionedit(){
+			return view();
+		}
+		public function questiondel(){
+			return view();
+		}
+	}

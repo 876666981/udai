@@ -1,0 +1,27 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Admin extends Controller{
+		public function admin_list(){
+			$list=db('admin')->paginate(2);
+			$page=$list->render();
+			$this->assign('page',$page);
+			$this->assign('list',$list);
+			return view();
+		}
+		public function admin_add(){
+			return view();
+		}
+		public function admin_edit(){
+			return view();
+		}
+		public function admin_cate(){
+			return view();
+		}
+		public function admin_role(){
+			return view();
+		}
+		public function admin_rule(){
+			return view();
+		}
+	}

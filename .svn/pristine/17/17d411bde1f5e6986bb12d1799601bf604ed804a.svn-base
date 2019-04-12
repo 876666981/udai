@@ -1,0 +1,119 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	use think\Request;
+	class Goods extends Controller{
+		public function goods_list(){
+			$list=db('goods')->field('goods.*,type.name')->join('type','goods.typeid=type.id','left')->order('id desc')->paginate(3);
+			$page=$list->render();
+			$this->assign('page',$page);
+        	$this->assign('list',$list);  
+        	return $this->fetch();	
+		}
+		public function goods_add(){
+			$list=db('type')->field('id,name,pid,path,concat(path,pid) as npath')->order("path")->select();
+			foreach($list as $k=>$v){
+		    	$list[$k]['npath'] = str_repeat('|--', substr_count($v['npath'],','));
+		    	$num[]=db('type')->field('count(*) as num')->where('pid',$v['id'])->select();
+
+		    }  
+		   $a=array();
+		   foreach ($num as $k =>$v) {
+			  foreach ($v as $key => $value) {
+			  		$a[$k]=$value;
+			  }
+		   }
+		   $this->assign('a',$a);
+		    $this->assign('list',$list);
+			return view();
+		}
+		public function goods_insert(){
+			$list=input('post.');
+			$list['addtime']=time();
+			$list['number']=substr(time(),0,8);
+			$num=db('goods')->insert($list);
+			return $num;
+		}
+		
+		public function goods_edit(){
+			$list=db('type')->field('id,name,pid,path,concat(path,pid) as npath')->order("path")->select();
+			foreach($list as $k=>$v){
+		    	$list[$k]['npath'] = str_repeat('|--', substr_count($v['npath'],','));
+		    	$num[]=db('type')->field('count(*) as num')->where('pid',$v['id'])->select();
+
+		    }  
+		   $a=array();
+		   foreach ($num as $k =>$v) {
+			  foreach ($v as $key => $value) {
+			  		$a[$k]=$value;
+			  }
+		   }
+		   $this->assign('a',$a);
+		   $this->assign('list',$list);
+			$id=input('id');
+			$arr=db('goods')->where('id',$id)->find();
+			$img=array();
+			$pic=array();
+			$img=explode(",",$arr['img']);
+			foreach ($img as $key => $value) {
+				if (strlen($value)>40) {
+					$pic[]=$value;
+				}
+			}
+			$this->assign('pic',$pic);
+        	$this->assign('arr',$arr);  
+        	return $this->fetch();	
+		}
+		public function goods_update(){
+			$list=input('post.');
+			$arr=db('goods')->where('id',$list['id'])->find();
+			if ($list['img']!=$arr['img']) {
+				$num=db('goods')->where('id',$list['id'])->update($list);
+				if ($num>0) {
+					$img=explode(",",$arr['img']);
+					foreach ($img as  $v) {
+						if (file_exists("uploads/$v")) {
+							unlink("uploads/$v");
+						}
+					}
+					return $num;
+				}
+			 }else{
+				$list['img']=$arr['img'];
+				$num=db('goods')->where('id',$list['id'])->update($list);
+				return $num;
+			}
+		}
+		public function goods_del(){
+			$id=input('id');
+			$list=db('goods')->where('id',$id)->find();
+			$num=db('goods')->where('id',$id)->delete();
+			if ($num>0) {
+				$img=explode(",",$list['img']);
+				foreach ($img as $k => $v) {
+					if (file_exists("uploads/$v")) {
+						unlink("uploads/$v");
+					}
+				}
+				return $num;
+			}
+		}
+		public function goods_show(){
+			return view();
+		}
+		public function goods_uploads(){
+			$files = request()->file('pic');
+			$imgname=array();
+			foreach($files as $file){
+			    // 移动到框架应用根目录/public/uploads/ 目录下
+			    $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+			    if($info){
+			        $imgname[]=$info->getSaveName();
+			     }else{
+			         // 上传失败获取错误信息
+			       return $file->getError();
+			     }    
+			}
+			return $imgname;
+		}
+	}

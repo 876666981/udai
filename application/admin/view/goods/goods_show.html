@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+             U袋网后台
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="__STATIC__/admin/css/x-admin.css" media="all">
+    </head>
+    
+    <body>
+        <div class="x-body">
+            <!-- <blockquote class="layui-elem-quote"> -->
+               <!--  <img src="__STATIC__/admin/images/logo.png" class="layui-circle" style="width:50px;float:left">
+                <dl style="margin-left:80px; color:#019688">
+                <dt><span ></span> <span ></span></dt>
+                <dd style="margin-left:0"></dd> -->
+          <!--     </dl>
+            </blockquote> -->
+            <div class="pd-20">
+              <table  class="layui-table" lay-skin="line">
+                <tbody>
+                   <tr>
+                    <th width="80">商品编号：</th>
+                    <td>{$list.number}</td>
+                  </tr>
+                   <tr>
+                    <th width="80">商品名称：</th>
+                    <td>{$list.goods_name}</td>
+                  </tr>
+                  <tr>
+                    <th  width="80">类别：</th>
+                    <td>{$list.name}</td>
+                  </tr>
+                  <tr>
+                    <th>商品毛重：</th>
+                    <td>{$list.rough}斤</td>
+                  </tr>
+                  <tr>
+                    <th>单价：</th>
+                    <td>￥{$list.price}元</td>
+                  </tr>
+                  <tr>
+                    <th>商品图片：</th>
+                    <td>
+                      {foreach $img as $v}
+                        <img src="../uploads/{$v}" width="40px">
+                      {/foreach}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>属性：</th>
+                    <td>
+                      {foreach $ata as $c}
+                        {$c.attr}
+                      {/foreach}
+                    </td>
+                  </tr>
+                   <tr>
+                    <th>属性值：</th>
+                    <td>
+                      {foreach $ata as $c}
+                         {$c.attr}:&nbsp;&nbsp;&nbsp;&nbsp;
+                        {foreach $ad as $v}
+                          {foreach $v as $k=>$v1}
+                            {if condition=" $k==$c.attr "}
+                              {$v1.value}&nbsp;&nbsp;&nbsp;&nbsp;
+                            {/if}
+                          {/foreach}
+                        {/foreach}
+                      {/foreach}
+                    </td>
+                  </tr>
+                   <tr>
+                    <th>商品详情图：</th>
+                    <td>
+                      {foreach $imgs as $v}
+                        <img src="../uploads/{$v}" width="40px">
+                      {/foreach}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>商品简述：</th>
+                    <td>{$list.describe}</td>
+                  </tr>
+                  <tr>
+                    <th>添加时间：</th>
+                    <td>{$list.addtime|date = 'Y-m-d H:i:s',###}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <script src="__STATIC__/admin/lib/layui/layui.js" charset="utf-8">
+        </script>
+        <script src="__STATIC__/admin/js/x-layui.js" charset="utf-8">
+        </script>
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+            
+              //自定义验证规则
+              form.verify({
+                nikename: function(value){
+                  if(value.length < 5){
+                    return '昵称至少得5个字符啊';
+                  }
+                }
+                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+                ,repass: function(value){
+                    if($('#L_pass').val()!=$('#L_repass').val()){
+                        return '两次密码不一致';
+                    }
+                }
+              });
+            });
+        </script>
+    </body>
+</html>

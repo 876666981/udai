@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            yershop商城
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="__STATIC__/admin/css/x-admin.css" media="all">
+        <style>
+            .layui-form-label{
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="x-body">
+            <form class="layui-form" action="cate-action.php?action=insert" method='post'>
+                <div class="layui-form-item">
+                   <label for="L_username" class="layui-form-label">
+                        <span class="x-red">*</span>子类：
+                    </label>
+                    <div class="layui-input-inline">
+                        <select name="" id="">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+
+                   <label for="L_username" class="layui-form-label">
+                        <span class="x-red">*</span>子类：
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="L_username" name="name" required="" lay-verify="nikename"
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div>
+                    <input type="hidden" name="pid" value="">
+                    <input type="hidden" name="path" value="">
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" lay-filter="add" lay-submit="">
+                        增加
+                    </button>
+                </div>
+            </form>
+        </div>
+        <script src="__STATIC__/admin/lib/layui/layui.js" charset="utf-8"></script>
+        <script src="__STATIC__/admin/js/x-layui.js" charset="utf-8"></script>    
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form();
+              layer = layui.layer;
+            
+            });
+        </script>
+    </body>
+
+</html>

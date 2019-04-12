@@ -1,0 +1,15 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Order extends Controller{
+		public function orderlist(){
+			$list=db('order')->select ();
+        	$this->assign('list',$list);  
+        	return $this->fetch('order/orderlist');
+		}
+
+
+		public function ordershow(){
+			return view();
+		}
+	}

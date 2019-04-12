@@ -1,0 +1,78 @@
+<?php
+namespace app\index\controller;
+
+class Personal
+{
+    public function udai_setting(){
+        return view();
+    }
+    public function udai_treasurer(){
+    	return view();
+    }
+    public function udai_integral(){
+    	return view();
+    }
+    public function udai_address(){
+    	return view();
+    }
+    public function udai_coupon(){
+    	return view();
+    }
+    public function udai_paypwd_modify(){
+    	return view();
+    }
+    public function udai_pwd_modify(){
+    	return view();
+    }
+    public function udai_collection(){
+    	return view();
+    }
+    public function udai_order(){
+    	return view();
+    }
+    public function udai_refund(){
+    	return view();
+    }
+    public function udai_mail_query(){
+    	return view();
+    }
+     public function udai_modifypay_step1(){
+    	return view();
+    }
+     public function udai_article1(){
+        return view();
+    }
+    public function udai_article2(){
+        return view();
+    }
+    public function udai_article3(){
+        return view();
+    }
+    public function udai_article4(){
+        return view();
+    }
+    public function udai_article5(){
+        return view();
+    }
+    public function udai_article6(){
+        return view();
+    }
+    public function udai_article7(){
+        return view();
+    }
+    public function udai_article8(){
+        return view();
+    }
+    public function udai_article9(){
+        return view();
+    }
+    public function udai_article10(){
+        return view();
+    }
+    public function udai_article11(){
+        return view();
+    }
+    public function udai_article12(){
+        return view();
+    }
+}

@@ -1,0 +1,15 @@
+<?php
+namespace app\index\controller;
+
+class Goods
+{
+    public function item_category(){
+        return view();
+    }
+    public function item_show(){
+    	return view();
+    }
+    public function item_sale_page(){
+    	return view();
+    }
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="__STATIC__/index/favicon.ico">
+	<link rel="stylesheet" href="__STATIC__/index/css/iconfont.css">
+	<link rel="stylesheet" href="__STATIC__/index/css/global.css">
+	<link rel="stylesheet" href="__STATIC__/index/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__STATIC__/index/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="__STATIC__/index/css/login.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/sweetalert.css"/>
+	<script src="__STATIC__/index/js/jquery.1.12.4.min.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/jquery.form.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/global.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/login.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/sweetalert.min.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+	<script src="__STATIC__/index/js/jquery.min.js" charset="UTF-8"></script>
+	<style type="text/css">
+	#g_no{
+		font-size: 20px;
+	}
+	#g_ok{
+		font-size: 20px;
+	}
+	#g_no:hover{
+		color: red;
+	}
+	#g_ok:hover{
+		color: red;
+	}
+	.btn:hover{
+		color: #fff;
+	}
+	.guize_html{position:fixed;top:25%;left:40%;margin-top:-50px;margin-left:-159px;width:530px;height:auto;border-radius:4px;background-color:#fff;color:#000;text-align:center;font-size:12px}
+	.guize_html p{padding:0 10px;text-align:left;text-indent:2em}
+	.guize_html_nei{width:530px;min-height:350px;overflow-y:auto;max-height:500px;height:350px;display:block;overflow-y:scroll}
+	.btn{display:block;border-radius:4px;background-color:#ff6434;color:#fff;cursor:pointer}
+	.overfloat{position:fixed;top:0;left:0;z-index:9;display:none;width:100%;height:100%;background-color:rgba(1,1,1,.5)}
+	</style>
+	<title>U袋网 - 注册</title>
+</head>
+<body>
+	<div class="overfloat" id="gui_kai">
+  	<div class="guize_html">
+  	<span class="guize_html_nei">
+	    <h3 style="font-weight: bold;"><br>注册协议</h3>
+	    <p>
+	        <br>【审慎阅读】您在申请注册流程中点击同意前，应当认真阅读以下协议。请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：
+	    </p>
+	    <p style="font-weight: bold;font-size: 14px;">
+	      1、与您约定免除或限制责任的条款；
+	    </p>
+	    <p style="font-weight: bold;font-size: 14px;">
+	     2、与您约定法律适用和管辖的条款；
+	    </p>
+	    <p style="font-weight: bold;font-size: 14px;">
+	     3、其他以粗体下划线标识的重要条款。
+	    </p>
+	    <p>如您对协议有任何疑问，可向平台客服咨询。</p>
+	    <p >【特别提示】当您按照注册页面提示填写信息、阅读并同意协议且完成全部注册程序后，即表示您已充分阅读、理解并接受协议的全部内容。如您因平台服务与淘宝发生争议的，适用《淘宝平台服务协议》处理。如您在使用平台服务过程中与其他用户发生争议的，依您与其他用户达成的协议处理。</p>
+		<p>阅读协议的过程中，如果您不同意相关协议或其中任何条款约定，您应立即停止注册程序。<br><br></p>
+		<p style="text-align: right;">运营中心</p>
+		<p style="text-align: right;">2018年6月1日</p>
+	</span>
+    <div id="g_close" class="btn">
+      <span id="g_no">不同意</span>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span id="g_ok">同意</span>
+    </div>
+    <div ></div>
+  </div>
+</div>
+	<div class="public-head-layout container">
+		<a class="logo" href="udindex"><img src="__STATIC__/index/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+	</div>
+	<div style="background:url(__STATIC__/index/images/login_bg.jpg) no-repeat center center; ">
+		<div class="login-layout container">
+			<div style="width:400px;height:400px;border:1px solid white;border-radius:5px;float:right;margin-top:10px;background-color:#fff;">
+				<div style="width:300px;height:300px;margin:30px auto;">
+  				<div class="tabs-nav">
+  					<h2>欢迎注册<a href="udlogin" class="pull-right fz16" id="reglogin">返回登录</a></h2>
+  				</div>
+  				<div class="tabs_container">
+					<form class="tabs_form" onsubmit="return dofun(this)">
+						<div class="form-group" style="margin-bottom: 0px;">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+								</div>
+								<input class="form-control phone" name="phone" id="register_phone" required placeholder="手机号" maxlength="11" autocomplete="off" type="tel" onblur="isPhone(this.value);"/>
+							</div>	
+						</div>
+						<div id="error1" style="width:300px;height:20px;color:red;"></div>
+						<div class="form-group" style="margin-bottom: 20px;">
+							<div class="input-group">
+								<input class="form-control" name="smscode" id="register_sms" placeholder="输入验证码" type="text" required>
+								<span class="input-group-btn">
+									<button class="btn btn-primary getsms" type="button" id="btn-i">发送短信验证码</button>
+									<div class="btn btn-primary getsms" type="button" id="btn-a" style="background: #CD6C6E;border: 1px solid #926263">发送短信验证码</div>
+								</span>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom: 0px;">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+								</div>
+								<input class="form-control password" name="password" id="register_pwd" placeholder="请输入密码" required autocomplete="off" type="password" maxlength="16" onblur="isPass(this.value);">
+								<div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
+							</div>
+						</div>
+						<div id="error2" style="width:300px;height:20px;color:red;"></div>
+						<div class="checkbox">
+	                        <label>
+	                        	点击注册，表示您同意<a href="__STATIC__/index/temp_article/udai_article3.html">U袋网用户协议</a>
+	                        </label>
+	                    </div>
+	                    <!-- 错误信息 -->
+						<div class="form-group">
+							<div class="error_msg" id="register_error"></div>
+						</div>
+						<input type="submit" class="btn btn-large btn-primary btn-lg btn-block submit" id="register_submit" value="注册" >
+						<div class="btn btn-large btn-primary btn-lg btn-block submit" id="register_submit2">注册</div>
+                    </form>
+                    <div class="tabs_div">
+	                    <div class="success-box">
+	                    	<div class="success-msg">
+								<i class="success-icon"></i>
+	                    		<p class="success-text">注册成功</p>
+	                    	</div>
+	                    </div>
+	                    <div class="option-box">
+	                    	<div class="buts-title">
+	                    		现在您可以
+	                    	</div>
+	                    	<div class="buts-box">
+	                    		<a role="button" href="index" class="btn btn-block btn-lg btn-default">继续访问商城</a>
+								<a role="button" href="udai_welcome" class="btn btn-block btn-lg btn-info">登录会员中心</a>
+	                    	</div>
+	                    </div>
+                    </div>
+                </div>
+               </div>
+			</div>
+			<script>
+				$(function() {
+				$("#gui_kai").show();
+				  });
+
+				$('#g_ok').click(function(){
+				 $("#gui_kai").hide();
+				});
+
+				$('#g_no').click(function(){
+					window.location.href="udindex";
+				});
+
+				var myphone=$("#register_phone").val();
+				if (myphone.length=="") {
+					$("#btn-i").hide();
+					$("#btn-a").show();
+					$("#register_submit").show();
+					$("#register_submit2").hide();
+				}
+
+				var ki=$("input:checkbox").attr("checked",false)
+				//验证手机号是否合法
+				function isPhone(phone){
+					var user=$('#register_phone').val();
+				    var RegCellPhone = /^1[3|4|5|7|8][0-9]{9}$/;
+				    var  falg=phone.search(RegCellPhone);
+				    if (user.length==0) {
+				    	$("#error1").html("✖手机号不能为空");
+				    	 this.focus();
+				    	 $("#btn-i").hide();
+				    	 $("#btn-a").show();
+				    	 $("#register_submit").hide();
+				    	 $("#register_submit2").show();
+				    	 return false;
+				       	// $("#btn-i").attr("disabled",'disabled');
+				        // $("#register_submit").attr("disabled",'disabled');
+				    }else if (falg==-1){
+				    	 $("#error1").html("✖请填写有效的11位手机号码");
+				      	// $("#sj_error").show();
+				        // this.focus();
+				        $("#btn-i").hide();
+				        $("#btn-a").show();
+				        $("#register_submit2").show();
+				        $("#register_submit").hide();
+				       	// $("#btn-i").attr("disabled",'disabled');
+				        // $("#register_submit").attr("disabled",'disabled');
+				    }else{
+				    	// $("#sj_error").hide();
+				    	$("#error1").html("");
+				    	// $("#register_submit").removeAttr("disabled");
+				    	// $("#btn-i").removeAttr("disabled");
+				    	$("#btn-i").show();
+				    	$("#btn-a").hide();
+				    	$("#register_submit").show();
+				    	$("#register_submit2").hide();
+				    }
+				}
+				//验证密码
+				function isPass(pass){
+					var upass=$('#register_pwd').val();
+				    var RegCellPass = /^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)(?![\W_]+$)\S{6,16}$/;
+				    var  falg=pass.search(RegCellPass);
+				    if (upass.length==0) {
+				    	$("#error2").html("");
+				    }else if (upass.length<6) {
+				    	$("#error2").html("✖请设置6-16位密码");
+				    	$("#register_submit2").show();
+				        $("#register_submit").hide();
+				    	// $("#register_submit").attr("disabled",'disabled');
+				    }else if (falg==-1){
+				      	 $("#error2").html("✖必须包含字母、数字、符号中至少2种");
+				        this.focus();
+				        // $("#register_submit").attr("disabled",'disabled');
+				    	$("#register_submit2").show();
+				        $("#register_submit").hide();
+				    }else{
+				    	$("#error2").html("");
+				    	$("#register_submit2").hide();
+				        $("#register_submit").show();
+				    }
+				}
+				$("#btn-i").click(function(){
+					var phone=$("input[type='tel']").val();
+					// alert(phone);
+					$.post("sendcode",{tel:phone},function(data){
+						if (data==1) {
+							swal("Good!", "已发送", "success");
+						}else{
+							swal("OMG!", "发送失败", "error");
+						}
+					})
+					function invokeSettime(obj){
+				    var countdown=60;
+				    settime(obj);
+				    function settime(obj) {
+					        if (countdown == 0) {
+					            $(obj).attr("disabled",false);
+					            $(obj).text("获取验证码");
+					            countdown = 60;
+					            return;
+					        } else {
+					            $(obj).attr("disabled",true);
+					            $(obj).text("(" + countdown + ") s 重新发送");
+					            countdown--;
+					        }
+					        setTimeout(function() {
+					                    settime(obj) }
+					                ,1000)
+					    }
+					}
+				  	new invokeSettime("#btn-i");
+				});
+				
+			</script>
+			<script type="text/javascript">
+				function dofun(form){
+					$.ajax({
+						url:"doregister",
+						type:"post",
+						data:$(form).serialize(),
+						dataType:"json",
+						async:true,
+						success:function(data){
+							if (data=="sj") {
+								swal("OMG!", "该手机号已注册", "error");
+							}else if (data=="OK") {
+								swal("Good!", "注册成功,请登录", "success");
+								setTimeout('window.location.href=\"udlogin\"',2000);
+							}
+						},
+						error:function(){
+							swal("OMG!", "验证码错误", "error");
+						}
+					});
+					return false;
+				}
+			</script>
+		</div>
+	</div>
+	
+	<div class="footer-login container clearfix">
+		
+		<!-- 版权 -->
+		<p class="copyright">
+			© 2005-2018 U袋网 版权所有，并保留所有权利<br>
+			ICP备案证书号：闽ICP备16015525号-2&nbsp;&nbsp;&nbsp;&nbsp;福建省宁德市福鼎市南下村小区（锦昌阁）1栋1梯602室&nbsp;&nbsp;&nbsp;&nbsp;Tel: 18650406668&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 18650406668@qq.com
+		</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"D:\wamp64\www\thinphp5\public/../application/index\view\personal\udai_modifypay_step2.html";i:1529933036;}*/ ?>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/static/index/favicon.ico">
+	<link rel="stylesheet" href="/static/index/css/iconfont.css">
+	<link rel="stylesheet" href="/static/index/css/global.css">
+	<link rel="stylesheet" href="/static/index/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/index/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/static/index/css/swiper.min.css">
+	<link rel="stylesheet" href="/static/index/css/styles.css">
+	<script src="/static/index/js/jquery.1.12.4.min.js" charset="UTF-8"></script>
+	<script src="/static/index/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script src="/static/index/js/swiper.min.js" charset="UTF-8"></script>
+	<script src="/static/index/js/global.js" charset="UTF-8"></script>
+	<!-- <script src="js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script> -->
+	<title>U袋网</title>
+</head>
+<body>
+	<!-- 顶部tab -->
+	<div class="tab-header">
+		<div class="inner">
+			<div class="pull-left">
+				<div class="pull-left">嗨，欢迎来到<span class="cr">U袋网</span></div>
+				<a href="agent_level">网店代销</a>
+				<a href="udaiarticle4">帮助中心</a>
+			</div>
+			<div class="pull-right">
+				<a href="udlogin"><span class="cr"><?php echo $username; ?></span><span><?php echo \think\Session::get('phone'); ?></span></a>
+				<a href="register"><?php echo $zc; ?></a>
+				<a href="emptysession"><?php echo $tc; ?></a>
+				<a href="udaiwelcome">我的U袋</a>
+				<a href="../personal/udai_order">我的订单</a>
+				<a href="../personal/udai_integral">积分平台</a>
+			</div>
+		</div>
+	</div>
+	<!-- 顶部标题 -->
+	<div class="bgf5 clearfix">
+		<div class="top-user">
+			<div class="inner">
+				<a class="logo" href="index"><img src="/static/index/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+				<div class="title">个人中心</div>
+			</div>
+		</div>
+	</div>
+	<div class="content clearfix bgf5">
+		<section class="user-center inner clearfix">
+			<div class="pull-left bgf">
+				<a href="udaiwelcome" class="title">U袋欢迎页</a>
+				<dl class="user-center__nav">
+					<dt>帐户信息</dt>
+					<a href="udaisetting"><dd>个人资料</dd></a>
+					<a href="udaiaddress"><dd class="active">收货地址</dd></a>
+					<a href="udaipaypwdmodify"><dd>修改支付密码</dd></a>
+					<a href="udaipwdmodify"><dd>修改登录密码</dd></a>
+				</dl>
+				<dl class="user-center__nav">
+					<dt>订单中心</dt>
+					<a href="udaiorder"><dd>我的订单</dd></a>
+				</dl>
+				<dl class="user-center__nav">
+					<dt>U袋网</dt>
+					<a href="udaiarticle10"><dd>企业简介</dd></a>
+					<a href="udaiarticle11"><dd>加入U袋</dd></a>
+					<a href="udaiarticle12"><dd>隐私说明</dd></a>
+				</dl>
+			</div>
+			<div class="pull-right">
+				<div class="user-content__box clearfix bgf">
+					<div class="title">账户信息-修改支付密码</div>
+					<div class="step-flow-box">
+						<div class="step-flow__bd">
+							<div class="step-flow__li step-flow__li_done">
+							  <div class="step-flow__state"><i class="iconfont icon-ok"></i></div>
+							  <p class="step-flow__title-top">验证身份</p>
+							</div>
+							<div class="step-flow__line step-flow__li_done">
+							  <div class="step-flow__process"></div>
+							</div>
+							<div class="step-flow__li step-flow__li_done">
+							  <div class="step-flow__state"><i class="iconfont icon-ok"></i></div>
+							  <p  class="step-flow__title-top">重置支付密码</p>
+							</div>
+							<div class="step-flow__line step-flow__line_ing">
+							  <div class="step-flow__process"></div>
+							</div>
+							<div class="step-flow__li">
+							  <div class="step-flow__state"><i class="iconfont icon-ok"></i></div>
+							  <p class="step-flow__title-top">完成</p>
+							</div>
+						</div>
+					</div>
+					<form action="" class="user-setting__form" onsubmit="return doupdate(this)">
+						<div class="form-group">
+							<input class="form-control" name="password" required="" maxlength="11" autocomplete="off" type="password">
+							<span class="tip-text">新的密码</span>
+							<span class="see-pwd pwd-toggle" title="显示密码"><i class="glyphicon glyphicon-eye-open"></i></span>
+							<span class="error_tip"></span>
+						</div>
+						<div class="form-group">
+						<div class="form-group">
+							<input class="form-control" name="repassword" required="" maxlength="11" autocomplete="off" type="password">
+							<span class="tip-text">再次确认新的密码</span>
+							<span class="see-pwd pwd-toggle" title="显示密码"><i class="glyphicon glyphicon-eye-open"></i></span>
+							<span class="error_tip"></span>
+						</div>
+						</div>
+						<div class="user-form-group tags-box">
+							<input type="submit" class="btn" value="提交">
+						</div>
+						<script src="/static/index/js/login.js"></script>
+						<script>
+							$(document).ready(function(){
+								$('.form-control').on('blur focus',function() {
+									$(this).addClass('focus')
+									if ($(this).val() == ''){$(this).removeClass('focus')}
+								});
+							});
+						</script>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!-- 右侧菜单 -->
+	<div class="right-nav">
+		<ul class="r-with-gotop">
+			<li class="r-toolbar-item">
+				<a href="udaiwelcome" class="r-item-hd">
+					<i class="iconfont icon-user" data-badge="0"></i>
+					<div class="r-tip__box"><span class="r-tip-text">用户中心</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="udaishopcart" class="r-item-hd">
+					<i class="iconfont icon-cart"></i>
+					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="udaicollection" class="r-item-hd">
+					<i class="iconfont icon-aixin"></i>
+					<div class="r-tip__box"><span class="r-tip-text">我的收藏</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="" class="r-item-hd">
+					<i class="iconfont icon-liaotian"></i>
+					<div class="r-tip__box"><span class="r-tip-text">联系客服</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item">
+				<a href="issues" class="r-item-hd">
+					<i class="iconfont icon-liuyan"></i>
+					<div class="r-tip__box"><span class="r-tip-text">留言反馈</span></div>
+				</a>
+			</li>
+			<li class="r-toolbar-item to-top">
+				<i class="iconfont icon-top"></i>
+				<div class="r-tip__box"><span class="r-tip-text">返回顶部</span></div>
+			</li>
+		</ul>
+		<script>
+			$(document).ready(function(){ $('.to-top').toTop({position:false}) });
+		</script>
+	</div>
+	<!-- 底部信息 -->
+	<div class="footer">
+		<div class="footer-tags">
+			<div class="tags-box inner">
+				<div class="tag-div">
+					<img src="/static/idnex/images/icons/footer_1.gif" alt="厂家直供">
+				</div>
+				<div class="tag-div">
+					<img src="/static/idnex/images/icons/footer_2.gif" alt="一件代发">
+				</div>
+				<div class="tag-div">
+					<img src="/static/idnex/images/icons/footer_3.gif" alt="美工活动支持">
+				</div>
+				<div class="tag-div">
+					<img src="/static/idnex/images/icons/footer_4.gif" alt="信誉认证">
+				</div>
+			</div>
+		</div>
+		<div class="footer-links inner">
+			<dl>
+				<dt>U袋网</dt>
+				<a href="udaiarticle10"><dd>企业简介</dd></a>
+				<a href="udaiarticle11"><dd>加入U袋</dd></a>
+				<a href="udaiarticle12"><dd>隐私说明</dd></a>
+			</dl>
+			<dl>
+				<dt>服务中心</dt>
+				<a href="udaiarticle1"><dd>售后服务</dd></a>
+				<a href="udaiarticle2"><dd>配送服务</dd></a>
+				<a href="udaiarticle3"><dd>用户协议</dd></a>
+				<a href="udaiarticle4"><dd>常见问题</dd></a>
+			</dl>
+			<dl>
+				<dt>新手上路</dt>
+				<a href="udaiarticle5"><dd>如何成为代理商</dd></a>
+				<a href="udaiarticle6"><dd>代销商上架教程</dd></a>
+				<a href="udaiarticle7"><dd>分销商常见问题</dd></a>
+				<a href="udaiarticle8"><dd>付款账户</dd></a>
+			</dl>
+		</div>
+		<div class="copy-box clearfix">
+			<ul class="copy-links">
+				<a href="agentlevel"><li>网店代销</li></a>
+				<a href="classroom"><li>U袋学堂</li></a>
+				<a href="udaiabout"><li>联系我们</li></a>
+				<a href="udaiarticle10"><li>企业简介</li></a>
+				<a href="udaiarticle5"><li>新手上路</li></a>
+			</ul>
+			<!-- 版权 -->
+			<p class="copyright">
+				© 2005-2017 U袋网 版权所有，并保留所有权利<br>
+				ICP备案证书号：闽ICP备16015525号-2&nbsp;&nbsp;&nbsp;&nbsp;福建省宁德市福鼎市南下村小区（锦昌阁）1栋1梯602室&nbsp;&nbsp;&nbsp;&nbsp;Tel: 18650406668&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 18650406668@qq.com
+			</p>
+		</div>
+	</div>
+	<script>
+		function doupdate(myform){
+			$.ajax({
+				url:"dopass",
+				type:"post",
+				data:$(myform).serialize(),
+				dataType:"html",
+				async:true,
+				success:function(data){
+					alert("修改密码成功");
+					window.location.href="udaimodifypaystep3";
+				},
+				error:function(data){
+					alert("修改密码失败");
+				}
+			});
+			return false;
+		}
+	</script>
+</body>
+</html>

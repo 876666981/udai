@@ -1,0 +1,67 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	use think\Request;
+	class Member extends Controller{
+		public function member_list(){
+			$arr=input('get.');
+			$sex=input('get.sex');
+			$phone=input('get.phone');
+			$pageParam=['query'=>[]];
+			$where=array();
+			if ($sex) {
+				$where['sex']=array('like',"%{$sex}%");
+				$this->assign('sex',$sex);
+				$pageParam['query']['sex']=$sex;
+			}
+			if ($phone) {
+				$where['phone']=array('like',"%{$phone}%");
+				$this->assign('phone',$phone);
+				$pageParam['query']['phone']=$phone;
+			}
+
+			$list=db('user')->where($where)->order('id desc')->paginate(4,"",$pageParam);
+			$totol =db('user')->count('id');
+			$page = $list->render();
+			$this->assign("page", $page);
+			$this->assign("totol", $totol);
+			$this->assign("list", $list);
+			return view();
+		}
+		public function member_add(){
+			return view("");
+		}
+		public function member_edit(){
+			return view("");
+		}
+		public function member_show(){
+			$id=input('id');
+      		$list=db('user')->find($id);
+         	$this->assign("list",$list);
+			return view("");
+		}
+		public function insert(){
+			 $list=input('post.');
+ 			
+			 if($list['password'] == $list['repass']){
+			 	 unset($list['repass']);
+				 $list['password']=md5($list['password']);
+				 $list['time']=time();
+				 $m=db("user")->where('state',1)->insert($list);
+				 return $m;	
+			}
+			 
+		}
+		public function state(){
+			$id=input('id');
+			$list=db('user')->where('id',$id)->find();
+			if($list['state'] == '1'){
+				$num=db('user')->where('id',$id)->update(['state' => '2']);
+				return  $num;
+			}else{
+				$num=db('user')->where('id',$id)->update(['state' => '1']);
+				return  $num;
+			}
+		}
+	
+	}

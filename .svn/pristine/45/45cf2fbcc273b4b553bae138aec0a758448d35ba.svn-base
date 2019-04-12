@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            X-admin v1.0
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="__STATIC__/admin/css/x-admin.css" media="all">
+    </head>
+    
+    <body>
+        <div class="x-body">
+            <form action="" method="post" class="layui-form layui-form-pane" onsubmit="return doadd(this)">
+                <div class="layui-form-item">
+                    <label for="name" class="layui-form-label">
+                        <span class="x-red">*</span>角色名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input" value="">
+                    </div>
+                </div>
+                 <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                      <input type="checkbox" name="status" lay-skin="switch">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="200">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                              <th>配置权限</th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            {volist name='list' id='vo'}
+                            <tr>
+                              <td><input type="checkbox"  dataid="id-{$vo.dataid}" name="rules[]" class="checkbox-parent {if condition='$vo.level neq 0'} checkbox-child{/if}" value="{$vo.id}" lay-filter="filter"><span {if condition='$vo.level eq 0'} style="font-size:16px;font-weight:bold;" {/if} class="text">{$vo.title}</span></td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-form-item">
+                <input class="layui-btn" lay-submit="" lay-filter="add" type="submit" value='增加'>
+              </div>
+            </form>
+        </div>
+        <script src="__STATIC__/admin/lib/layui/layui.js" charset="utf-8">
+        </script>
+        <script src="__STATIC__/admin/js/x-layui.js" charset="utf-8">
+        </script>
+        <script src="__STATIC__/admin/js/jquery-1.8.3.min.js" charset="utf-8">
+        </script>
+        <script>
+            layui.use(['laydate','element','laypage','layer','form'], function(){
+                $ = layui.jquery;//jquery
+              laydate = layui.laydate;//日期插件
+              lement = layui.element();//面包导航
+              var form = layui.form();
+              laypage = layui.laypage;//分页
+              layer = layui.layer;//弹出层
+                form.on('checkbox(filter)', function(data){
+                  // console.log(data.elem); //得到checkbox原始DOM对象
+                  // console.log(data.elem.checked); //是否被选中，true或者false
+                  // console.log(data.value); //复选框value值，也可以通过data.elem.value得到
+                  // console.log(data.othis); //得到美化后的DOM对象
+                  // 
+                  // 
+                // $('data.elem.checkbox-parent').change(function(){
+                //     alert(1);
+                //     var dataid=$(this).attr('dataid');
+                //     $('data.elem[data^='+dataid+']').prop('checked',$(this).is(':checked'));
+                // })
+                // $('data.elem.checkbox-child').on('chenge',function(){
+                //    var dataid=$(this).attr('dataid');
+                //    dataid=dataid.substring(0,dataid.lastIndexOf("-"));
+                //    var parent=$('data.elem[dataid='+dataid+']');
+                //    if($(this).is(':checked')){
+                //         parent.prop('checked',true);
+                //         while(dataid.lastIndexOf("-")!=2){
+                //             dataid=dataid.substring(0,dataid.lastIndexOf("-"));
+                //             parent.prop('checked',true);
+                //         }
+                //    }else{
+                //         if($('data.elem[dataid^='+dataid+'-]:checked').length==0){
+                //             parent.prop('checked',false);
+                //             while(dataid.lastIndexOf("-")!=2){
+                //                  dataid=dataid.substring(0,dataid.lastIndexOf("-"));
+                //                  parent=$('data.elem[dataid='+dataid+']');
+                //                  if($('data.elem[dataid^='+dataid+'-]:checked').length==0){
+                //                     parent.prop('checked',false);
+                //                  }
+                //             }
+                //         }
+                //    }
+                // })
+                });
+            });
+            function doadd(myform){
+                $.ajax({
+                    url:'roleinsert',
+                    type:'post',
+                    data:$(myform).serialize(),
+                    dataType:'json',
+                    async:true,
+                    success:function(data){
+                       if (data>0) {
+                            layer.msg('添加成功');
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            window.parent.location.reload();
+                        }
+                    },
+                    error:function(){
+                        layer.msg('修改失败');
+                    }
+                });
+                return false;
+            }
+          
+        </script>
+    </body>
+</html>

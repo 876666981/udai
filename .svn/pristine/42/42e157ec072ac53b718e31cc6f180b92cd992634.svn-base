@@ -1,0 +1,20 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Comment extends Controller{
+		public function comment_list(){
+			$list=db('evaluate')->order('id desc')->select();
+			$this->assign('list',$list);
+			return view();
+		}
+		public function comment_edit(){
+			$id=input('id');
+			$list=db('evaluate')->where('id',$id)->select();
+			$this->assign('list',$list);
+			return view();
+		}
+		public function feedback_list(){
+			return view();
+		}
+		
+	}

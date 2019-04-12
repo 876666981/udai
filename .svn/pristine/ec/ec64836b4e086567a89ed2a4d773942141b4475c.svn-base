@@ -1,0 +1,49 @@
+<?php
+namespace app\index\controller;
+
+class Index
+{
+    public function index()
+    {
+        return view();
+    }
+    public function login(){
+    	return view();
+    }
+    public function register(){
+    	return view();
+    }
+    public function resetpwd(){
+    	return view();
+    }
+    public function agent_level(){
+    	return view();
+    }
+    public function udai_welcome(){
+    	return view();
+    }
+     public function udai_integral(){
+    	return view();
+    }
+     public function udai_shopcart(){
+    	return view();
+    }
+     public function class_room(){
+    	return view();
+    }
+     public function enterprise_id(){
+    	return view();
+    }
+     public function udai_contract(){
+    	return view();
+    }
+     public function item_remove(){
+    	return view();
+    }
+    public function issues(){
+    	return view();
+    }
+     public function udai_about(){
+    	return view();
+    }
+}

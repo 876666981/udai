@@ -1,0 +1,118 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	use think\Request;
+	class  Admin extends Controller{
+		public function admin_list(){
+			$arr=input('get.');
+			$sex=input('get.sex');
+			$admin_name=input('get.admin_name');
+			$pageParam=['query'=>[]];
+			$where=array();
+			if ($sex) {
+				$where['sex']=array('like',"%{$sex}%");
+				$this->assign('sex',$sex);
+				$pageParam['query']['sex']=$sex;
+			}
+			if ($admin_name) {
+				$where['admin_name']=array('like',"%{$admin_name}%");
+				$this->assign('admin_name',$admin_name);
+				$pageParam['query']['admin_name']=$admin_name;
+			}
+
+			$list=db('admin')->where($where)->order('id desc')->paginate(3,"",$pageParam);
+		    $totol =db('admin')->count('id');
+			$this->assign("list", $list);
+			$this->assign("totol", $totol);
+			return view("");
+			
+		}
+		public function add(){
+			return view("admin_add");
+
+		}
+		public function show(){
+			$id=input('id');
+      		$list=db('admin')->find($id);
+         	$this->assign("list",$list);
+			return view("admin_show");
+
+	 	}
+
+
+		public function edit(){
+			$id=input('id');
+      		$list=db('admin')->find($id);
+         	$this->assign("list",$list);
+			return view("admin_edit");
+		}
+		function reloadPage() {  
+            window.location.reload()  ;
+        }  
+		public function admincate(){
+			return view();
+
+		}
+
+		public function del(){
+			// var_dump(input('get.id'));
+			$id=input('id');
+	        $m=db('admin')->delete($id);
+	        return $m;
+		}
+		public function deleteall(){
+			$getid = input('id'); //获取选择的复选框的值
+	       
+	        if (!$getid)
+	            $this->error('未选择记录'); //没选择就提示信息
+	        $getids = explode(',', $getid); //选择一个以上，就用,把值连接起来(1,2,3)这样
+	        $id = is_array($getid) ? $getids : $getid; //如果是数组，就把用,连接起来的值覆给$id,否则就覆获取到的没有,号连接起来的值
+	     //最后进行数据操作,
+	     	if(!is_array($id)){
+	     		 $Result = db("admin")->delete($id);
+	     	}else{
+				foreach ($id as $v) {
+				      $Result = db("admin")->delete($id['$v']);
+				  }
+	     	}
+		    $say = '删除成功';
+		        if ($Result === false) {
+		            $this->error('操作失败');
+		        } else {
+		            $this->success($say);
+		        }
+	     	
+	      }
+		public function admin_rule(){
+			return view();
+
+		}
+		public function admin_role(){
+			return view();
+
+		}
+		public function admin_cate(){
+			return view();
+
+		}
+		public function update(){
+			$list=input('post.');
+	        unset($list['repass']);
+	        $m=db('admin')->update($list);
+	        return $m;
+
+		}
+		public function insert(){
+			 $list=input('post.');
+
+			 if($list['repass']==$list['pass']){
+			  	 unset($list['repass']);
+			  	 $list['pass']=md5($list['pass']);
+			  	 $list['addtime']=time();
+			  	 
+			  	 $m=db("admin")->insert($list);
+			  	 return $m;
+			 }
+		}
+
+}

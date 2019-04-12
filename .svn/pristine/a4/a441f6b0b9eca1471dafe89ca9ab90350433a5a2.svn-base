@@ -1,0 +1,24 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class banner extends Controller{
+		public function bannerlist(){
+			$list=db('banner')->select ();
+        	$this->assign('list',$list);  
+        	return $this->fetch('banner/bannerlist');	
+		}
+		public function banneradd(){
+			return $this->fetch("banner/banneradd");		
+		}
+		public function insert(){
+			$list['describe']=input('describe');
+			$list['id']=input('id');
+			$list['addtime']=date('Y-m-d H:i:s',time());
+			$add=db("banner")->insert($list);
+			
+
+		}
+		public function banneredit(){
+			return $this->fetch("banner/banneredit");		
+		}
+	}

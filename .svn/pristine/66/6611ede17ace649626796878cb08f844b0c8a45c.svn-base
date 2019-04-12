@@ -1,0 +1,14 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Banner extends Controller{
+		public function bannerlist(){
+			return view();
+		}
+		public function banneradd(){
+			return view();
+		}
+		public function banneredit(){
+			return view();
+		}
+	}

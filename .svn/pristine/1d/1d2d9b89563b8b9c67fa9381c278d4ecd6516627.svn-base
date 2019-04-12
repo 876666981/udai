@@ -1,0 +1,18 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Classify extends Controller{
+		public function classify_list(){
+			$list=db('type')->where('pid','=',0)->select();
+			$this->assign('list',$list);
+			// $arr=db('type')->where('pid','=',$list['id'])->select();
+			// $this->assign('arr',$arr);
+			return view();
+		}
+		public function classify_add(){
+			return view();
+		}
+		public function classify_edit(){
+			return view();
+		}
+	}

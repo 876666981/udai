@@ -1,0 +1,78 @@
+<?php
+// +----------------------------------------------------------------------
+// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: liu21st <liu21st@gmail.com>
+// +----------------------------------------------------------------------
+
+return [
+    '__pattern__' => [
+        'name' => '\w+',
+    ],
+    '[hello]'     => [
+        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
+        ':name' => ['index/hello', ['method' => 'post']],
+    ],
+    //后台
+    'login'	=>	'admin/login/index',	//登录页
+    'adminindex'	=>	'admin/index/index',	//后台首页
+    'welcome'	=>	'admin/index/welcome',	//后台桌面
+    'eliminate'	=>	'admin/login/eliminate',	//退出(清除session)
+    //轮播图
+    'bannerlist'=>'admin/banner/banner_list',
+    'banneradd'=>'admin/banner/banner_add',
+    'banneredit'=>'admin/banner/banner_edit',
+    'bannerdel'=>'admin/banner/banner_del',
+    'bannerinsert'=>'admin/banner/banner_insert',
+    'bannerupdate'=>'admin/banner/banner_update',
+    'bannerstate'=>'admin/banner/banner_state',
+    'banneruploads'=>'admin/banner/banner_uploads',
+    //问题管理
+    'questionlist'=>'admin/question/question_list',
+    'questiondel'=>'admin/question/question_del',
+    //产品管理
+    'goodslist'=>'admin/goods/goods_list',
+    'goodsadd'=>'admin/goods/goods_add',
+    'goodsinsert'=>'admin/goods/goods_insert',
+    'goodsedit'=>'admin/goods/goods_edit',
+    'goodsupdate'=>'admin/goods/goods_update',
+    'goodsdel'=>'admin/goods/goods_del',
+    'goodsattradd'=>'admin/goods/goods_attr_add',
+    'goodsattredit'=>'admin/goods/goods_attr_edit',
+    'goodsuploads'=>'admin/goods/goods_uploads',
+    //订单管理
+    'orderlist'=>'admin/order/order_list',
+    //分类管理
+    'classifylist'=>'admin/classify/classify_list',
+    'classifyadd'=>'admin/classify/classify_add',
+    'classifyedit'=>'admin/classify/classify_edit',
+    'classifyadds'=>'admin/classify/classify_adds',
+    'classifyinsert'=>'admin/classify/classify_insert',
+    'classifyinserts'=>'admin/classify/classify_inserts',
+    'classifydel'=>'admin/classify/classify_del',
+    'classifyupdate'=>'admin/classify/classify_update',
+    //评论管理
+    'commentlist'=>'admin/comment/comment_list',
+    'commentedit'=>'admin/comment/comment_edit',
+    'commentupdate'=>'admin/comment/comment_update',
+    'feedbacklist'=>'admin/comment/feedback_list',
+    //会员管理
+    'memberlist'=>'admin/member/member_list',
+    //管理员管理
+    'adminlist'=>'admin/admin/admin_list',
+    'adminrole'=>'admin/admin/admin_role',
+    'admincate'=>'admin/admin/admin_cate',
+    'adminrule'=>'admin/admin/admin_rule',
+
+
+
+
+
+    //前台
+    'register'  =>  'index/index/register', //注册页
+    'doregister'    =>  'index/index/do_register',  //执行注册
+];

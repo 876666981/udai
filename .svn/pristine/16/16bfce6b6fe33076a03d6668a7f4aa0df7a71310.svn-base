@@ -1,0 +1,62 @@
+<?php
+    namespace app\index\controller;
+    use think\Controller;
+    use think\Request;
+    use think\Config;
+    use think\Session;
+class Index
+{
+    public function index()
+    {
+        return view();
+    }
+    public function login(){
+    	return view();
+    }
+    public function register(){
+    	return view();
+    }
+    public function do_register(){
+        if (Request::instance()->isPost()) {
+            $data = input('post.');
+            $phone = $data['phone'];
+            $smscode = $data['smscode'];
+            $password = $data['password'];
+            $info = db('user')->insert($data);
+            // var_dump($data);
+        }
+    }
+    public function resetpwd(){
+    	return view();
+    }
+    public function agent_level(){
+    	return view();
+    }
+    public function udai_welcome(){
+    	return view();
+    }
+     public function udai_integral(){
+    	return view();
+    }
+     public function udai_shopcart(){
+    	return view();
+    }
+     public function class_room(){
+    	return view();
+    }
+     public function enterprise_id(){
+    	return view();
+    }
+     public function udai_contract(){
+    	return view();
+    }
+     public function item_remove(){
+    	return view();
+    }
+    public function issues(){
+    	return view();
+    }
+     public function udai_about(){
+    	return view();
+    }
+}

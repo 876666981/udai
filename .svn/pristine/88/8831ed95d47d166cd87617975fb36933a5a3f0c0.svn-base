@@ -1,0 +1,14 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Classify extends Controller{
+		public function classifylist(){
+			return view();
+		}
+		public function classifyadd(){
+			return view();
+		}
+		public function classifyedit(){
+			return view();
+		}
+	}

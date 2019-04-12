@@ -1,0 +1,10 @@
+<?php
+namespace app\admin\validate;
+use think\Validate;
+class User extends Validate
+{
+	protected $rule = [
+	  	 'admin_name'  =>  'require|max:25',
+	  	 'password'		=>	'require',
+	];
+}

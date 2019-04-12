@@ -1,0 +1,77 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Banner extends Controller{
+		public function banner_list(){
+			$list=db('banner')->select();
+			$this->assign('list',$list);
+			return view();
+		}
+		public function banner_add(){
+			return view();
+		}
+		public function banner_insert(){
+			$list=input('post.');
+			$list['addtime']=time();
+			$list['state']=1;
+			$num=db('banner')->insert($list);
+			return $num;
+		}
+		public function banner_edit(){
+			$id=input('id');
+			$list=db('banner')->where('id',$id)->find();
+			$this->assign('list',$list);
+			return view();
+		}
+		public function banner_update(){
+			$list=input('post.');
+			$img=db('banner')->where('id',$list['id'])->find();
+			$picname=$img['imgname'];
+			if ($list['imgname']!=$picname) {
+				$num=db('banner')->where('id',$list['id'])->update($list);
+				if ($num>0) {
+					if (file_exists("uploads/{$picname}")) {
+						unlink("uploads/{$picname}");
+						return $num;
+					}
+				}
+			}else{
+				$list['imgname']=$picname;
+				$num=db('banner')->where('id',$list['id'])->update($list);
+				return $num;
+			}
+		}
+		public function banner_state(){
+			$id=input('id');
+			$list=db('banner')->where('id',$id)->find();
+			if ($list['state']=='1') {
+				$num=db('banner')->where('id',$id)->update(['state'=>2]);
+				return  $num;
+			}else{
+				$num=db('banner')->where('id',$id)->update(['state'=>1]);
+				return  $num;
+			}
+		}
+		public function banner_del(){
+			$id=input('id');
+			$list=db('banner')->where('id',$id)->find();
+			$picname=$list['imgname'];
+			$num=db('banner')->where('id',$id)->delete();
+			if (file_exists("uploads/{$picname}")) {
+				unlink("uploads/{$picname}");	
+			}
+			return $num;
+		}
+		public function banner_uploads(){
+			$file =request()->file('pic');
+			// 移动到框架应用根目录/public/uploads/bigpic 目录下
+			$info = $file->move(ROOT_PATH . 'public' . DS .'uploads');
+			if($info){
+
+		       	return $info->getSaveName(); 
+			}else{
+		       	// 上传失败获取错误信息
+		       	return  $file->getError();
+			}
+		}
+	}

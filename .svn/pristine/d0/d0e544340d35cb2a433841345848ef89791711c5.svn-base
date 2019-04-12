@@ -1,0 +1,137 @@
+<?php
+namespace app\index\controller;
+	use think\Controller;
+    use think\Request;
+    use think\Config;
+    use think\Session;
+
+class Goods extends Controller
+{
+    public function item_category(){
+    	// $this->assign();
+        $list=db('type')->where('pid',0)->select();
+        if (request()->isGet()) {
+            $id=input('get.');
+            $list2=db('type')->where('id',$id['id'])->find();
+            $list3=db('type')->where('pid',$list2['id'])->select(); 
+            foreach ($list3 as $k => $v) {
+              $at=db('goods_attr')->field('goods_attr.*')->join('type',"goods_attr.type_id={$v['id']}")->select();  
+            }
+        }
+        $av=array();
+        $x='';
+        foreach ($at as $k => $v) {
+ 
+        	var_dump($v);
+        	foreach ($v as $key => $val) {
+        		if ($v['attr']==$val) {
+        			$x.=','.$key;
+        		}
+        		$av[]=$val;
+        	}
+        }
+        var_dump($x);
+        var_dump($av);die;
+        $as=array_unique($av);
+        var_dump($as);die;
+        foreach ($av as $k => $v) {
+        	$value[]=db('goods_attr')->where('attr',$v)->select();
+        }
+        foreach ($value as $k => $v) {
+        	foreach ($v as $key => $value) {
+        		$vl[]=db('goods_value')->field('id,value,attr_id')->where('attr_id',$value['id'])->select();
+        	}
+        }
+        $val=array();
+        foreach ($vl as $key => $value) {
+        	foreach ($value as $k => $v) {
+        		$val[]=$v;
+        	}
+        }
+        var_dump($val);die;
+        $new_name = array();
+		$data = array();
+		foreach ($val as $key => $value) {
+		    if($value['value']){
+		        $new_name[] = $value['value'];
+		    }
+		}
+		$res = array_unique($new_name);
+		foreach ($res as $k => $v) {
+		    foreach ($val as $kk => $vv) {
+		    	if ($v==$vv['value']) {
+		    		$data[$k]['id']=$vv['id'];
+		    		$data[$k]['value']=$v;
+		    		$data[$k]['attr_id']=$vv['attr_id'];
+		    	}
+		    }
+		}
+        var_dump($data);die;
+    	// 产品列表页
+    	  // $goods=db('goods')->join("goods_value","goods.id=goods_value.goods_id")->join("goods_attr","goods.typeid=goods_attr.type_id")->join("goods_img","goods.id=goods_img.goods_id")->field('goods.*,goods_value.*,goods_attr.*,goods_img.*')->select();
+        //爆款推荐
+       $hot=db('goods')->where('hot','yes')->where('state','1')->select();
+       $this->assign('hot',$hot);
+       $this->assign('list',$list);
+       $this->assign('list3',$list3);
+       $this->assign('as',$as);
+       $this->assign('data',$data);
+        return view();
+    }
+    public function item_show(){
+    	if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+            $this->assign('dcdl','点此登录');
+            $this->assign('nhao','你好');
+            $this->assign('jf','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+            $this->assign('dcdl','');
+            $this->assign('nhao','');
+            $this->assign('jf','积分');
+        }
+        // 爆款推荐
+        
+         $hot=db('goods')->where('hot','yes')->where('state','1')->select();
+         //详情
+         $id=input('id');
+         // 商品表
+         $all=db('goods')->where('id',$id)->find();
+
+         $pic=$all['img'];
+         $img=explode(",",$pic);
+         // var_dump($img);die;
+        // foreach ($img as $key => $value) {
+        //     # code...
+        // }
+        // print_r($pic);echo "</br>";  
+          // dump($all);
+         // 属性和属性值
+         $color=db('goods_attr')->where('goods_id',$all['id'])->select();
+         $value=db("goods_value")->select();
+         $comment=db('evaluate')->count();
+        
+        $this->assign('value',$value);
+        $this->assign('pic',$pic);
+        // $this->assign('i',$i);
+
+
+
+        $this->assign('color',$color);
+        $this->assign('comment',$comment);
+        $this->assign('all',$all);
+        $this->assign('hot',$hot);
+    	return view();
+    }
+     public function shopcar(){
+
+        return view();
+    }
+    public function item_sale_page(){
+    	return view();
+    }
+}

@@ -1,0 +1,537 @@
+---------------------------------------------------------------
+[ 2018-06-16T13:30:38+08:00 ] 0.0.0.0 GET /thinphp5/public/
+[ info ] localhost/thinphp5/public/ [运行时间：0.245014s][吞吐率：4.08req/s] [内存消耗：5,868.23kb] [文件加载：54]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\wamp64\www\thinphp5\application\index\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/index\view\index\index.html [ array (
+  0 => 'goods_name',
+  1 => 'app',
+  2 => 'aps',
+  3 => 'shop',
+  4 => 'sps',
+  5 => 'das',
+  6 => 'hop',
+  7 => 'hps',
+  8 => 'kas',
+  9 => 'nop',
+  10 => 'px',
+  11 => 'kms',
+  12 => 'nsp',
+  13 => 'dok',
+  14 => 'haps',
+  15 => 'esp',
+  16 => 'hoot',
+  17 => 'list',
+  18 => 'username',
+  19 => 'zc',
+  20 => 'tc',
+  21 => 'dcdl',
+  22 => 'nhao',
+  23 => 'jf',
+  24 => 'ban',
+  25 => 'plist',
+  26 => 'a',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=udai;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `type` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  (  pid=0  ) ORDER BY `id` ASC [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `goods`.*,`type`.`name` FROM goods,type WHERE  (  goods.typeid=type.id )  AND `hot` = 'yes'  AND `goods_name` LIKE '%%'  AND `state` = '1' [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  (  pid=0 )  AND `path` = '0,1' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  `pid` = 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `goods`.*,`type`.`name` FROM goods,type WHERE  (  goods.typeid=type.id )  AND `floor` = '1'  AND `goods_name` LIKE '%%'  AND `state` = '1' [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  (  pid=0 )  AND `path` = '0,2' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  `pid` = 2 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `goods`.*,`type`.`name` FROM goods,type WHERE  (  goods.typeid=type.id )  AND `floor` = '2'  AND `goods_name` LIKE '%%'  AND `state` = '1' [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  (  pid=0 )  AND `path` = '0,3' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  `pid` = 3 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `goods`.*,`type`.`name` FROM goods,type WHERE  (  goods.typeid=type.id )  AND `floor` = '3'  AND `goods_name` LIKE '%%'  AND `state` = '1' [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  (  pid=0 )  AND `path` = '0,5' LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  `pid` = 5 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `goods`.*,`type`.`name` FROM goods,type WHERE  (  goods.typeid=type.id )  AND `goods_name` LIKE '%%'  AND `floor` = '4'  AND `state` = '1' [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  (  pid=0 )  AND `path` = '0,4' LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`pid`,`path` FROM `type` WHERE  `pid` = 4 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `goods`.*,`type`.`name` FROM goods,type WHERE  (  goods.typeid=type.id )  AND `goods_name` LIKE '%%'  AND `floor` = '5'  AND `state` = '1' [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `banner` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `banner` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 0 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 6 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 7 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 8 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 2 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 10 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 11 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 3 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 13 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 14 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 15 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 4 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 16 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 17 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 18 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 19 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 20 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 0 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 1 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 6 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 7 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 8 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 2 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 10 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 11 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 3 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 13 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 14 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 15 [ RunTime:0.001001s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 4 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 16 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 17 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 18 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 5 [ RunTime:0.000000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 19 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `type` WHERE  `pid` = 20 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2018-06-16T13:32:45+08:00 ] 0.0.0.0 GET /thinphp5/public/login
+[ info ] localhost/thinphp5/public/login [运行时间：0.099005s][吞吐率：10.10req/s] [内存消耗：3,583.90kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\wamp64\www\thinphp5\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:32:45+08:00 ] 0.0.0.0 GET /thinphp5/public/captcha.html
+[ info ] localhost/thinphp5/public/captcha.html [运行时间：0.132008s][吞吐率：7.58req/s] [内存消耗：2,931.55kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\thinphp5\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:32:59+08:00 ] 0.0.0.0 GET /thinphp5/public/login
+[ info ] localhost/thinphp5/public/login [运行时间：0.092005s][吞吐率：10.87req/s] [内存消耗：3,584.24kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\wamp64\www\thinphp5\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:32:59+08:00 ] 0.0.0.0 GET /thinphp5/public/captcha.html
+[ info ] localhost/thinphp5/public/captcha.html [运行时间：0.060003s][吞吐率：16.67req/s] [内存消耗：2,932.04kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\thinphp5\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:00+08:00 ] 0.0.0.0 GET /thinphp5/public/login
+[ info ] localhost/thinphp5/public/login [运行时间：0.085005s][吞吐率：11.76req/s] [内存消耗：3,584.24kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\wamp64\www\thinphp5\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:00+08:00 ] 0.0.0.0 GET /thinphp5/public/captcha.html
+[ info ] localhost/thinphp5/public/captcha.html [运行时间：0.108006s][吞吐率：9.26req/s] [内存消耗：2,931.96kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\thinphp5\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:01+08:00 ] 0.0.0.0 GET /thinphp5/public/login
+[ info ] localhost/thinphp5/public/login [运行时间：0.087005s][吞吐率：11.49req/s] [内存消耗：3,584.24kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\wamp64\www\thinphp5\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:02+08:00 ] 0.0.0.0 GET /thinphp5/public/captcha.html
+[ info ] localhost/thinphp5/public/captcha.html [运行时间：0.079005s][吞吐率：12.66req/s] [内存消耗：2,932.02kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\thinphp5\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:03+08:00 ] 0.0.0.0 GET /thinphp5/public/login
+[ info ] localhost/thinphp5/public/login [运行时间：0.084005s][吞吐率：11.90req/s] [内存消耗：3,584.24kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\wamp64\www\thinphp5\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:03+08:00 ] 0.0.0.0 GET /thinphp5/public/captcha.html
+[ info ] localhost/thinphp5/public/captcha.html [运行时间：0.095005s][吞吐率：10.53req/s] [内存消耗：2,932.04kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\thinphp5\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:19+08:00 ] 0.0.0.0 GET /thinphp5/public/login?admin_name=lisi&password=123456&code=6539
+[ info ] localhost/thinphp5/public/login?admin_name=lisi&password=123456&code=6539 [运行时间：0.084005s][吞吐率：11.90req/s] [内存消耗：3,585.66kb] [文件加载：47]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'login',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+)
+[ info ] [ PARAM ] array (
+  'admin_name' => 'lisi',
+  'password' => '123456',
+  'code' => '6539',
+)
+[ info ] [ RUN ] app\admin\controller\Login->index[ D:\wamp64\www\thinphp5\application\admin\controller\Login.php ]
+[ info ] [ VIEW ] D:\wamp64\www\thinphp5\public/../application/admin\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-06-16T13:33:19+08:00 ] 0.0.0.0 GET /thinphp5/public/captcha.html
+[ info ] localhost/thinphp5/public/captcha.html [运行时间：0.078005s][吞吐率：12.82req/s] [内存消耗：2,932.02kb] [文件加载：36]
+[ info ] [ LANG ] D:\wamp64\www\thinphp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://localhost/thinphp5/public/login?admin_name=lisi&password=123456&code=6539',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=i78emii7fbchckfia9mdgp1f92',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\wamp64\www\thinphp5\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            X-admin v1.0
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="__STATIC__/admin/css/x-admin.css" media="all">
+    </head>
+    
+    <body>
+        <div class="x-body">
+              <form action="" method="post" class="layui-form layui-form-pane" onsubmit="return doupdate(this)">
+                <input type="hidden" name="id" value="{$arr.id}">
+                <div class="layui-form-item">
+                    <label for="name" class="layui-form-label">
+                        <span class="x-red">*</span>角色名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" required="" lay-verify="required" value="{$arr.title}" 
+                        autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                  <div class="layui-form-item">
+                    <label class="layui-form-label">状态</label>
+                    <div class="layui-input-block">
+                        {if condition="$arr.status=='on'"}
+                        <input type="checkbox" name="status" lay-skin="switch" checked>
+                        {else /}
+                        <input type="checkbox" name="status" lay-skin="switch">
+                        {/if}
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                  <table class="layui-table">
+                        <colgroup>
+                            <col width="150">
+                            <col width="200">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                              <th>配置权限</th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            {volist name='list' id='vo'}
+                            <tr>
+                              <td>
+                                {in name="$vo.id" value="$arr.rules"}
+                                <input type="checkbox"  dataid="id-{$vo.dataid}" name="rules[]" class="checkbox-parent {if condition='$vo.level neq 0'} checkbox-child{/if}" value="{$vo.id}" lay-filter="filter" checked><span {if condition='$vo.level eq 0'} style="font-size:16px;font-weight:bold;" {/if} class="text">{$vo.title}</span>
+                                {else /}
+                                <input type="checkbox"  dataid="id-{$vo.dataid}" name="rules[]" class="checkbox-parent {if condition='$vo.level neq 0'} checkbox-child{/if}" value="{$vo.id}" lay-filter="filter"><span {if condition='$vo.level eq 0'} style="font-size:16px;font-weight:bold;" {/if} class="text">{$vo.title}</span>
+                                {/in}
+                                </td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="layui-form-item">
+                <input class="layui-btn" lay-submit="" lay-filter="save" type="submit" value="保存">
+              </div>
+            </form>
+        </div>
+        <script src="__STATIC__/admin/lib/layui/layui.js" charset="utf-8">
+        </script>
+        <script src="__STATIC__/admin/js/x-layui.js" charset="utf-8">
+        </script>
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+            });
+             function doupdate(myform){
+                $.ajax({
+                    url:'roleupdate',
+                    type:'post',
+                    data:$(myform).serialize(),
+                    dataType:'json',
+                    async:true,
+                    success:function(data){
+                       if (data>0) {
+                            layer.msg('修改成功');
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            window.parent.location.reload();
+                        }
+                    },
+                    error:function(){
+                        layer.msg('修改失败');
+                    }
+                });
+                return false;
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,287 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:71:"F:\WWW\thinkphp5\public/../application/admin\view\admin\admin_list.html";i:1528811811;}*/ ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            X-admin v1.0
+        </title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="/static/admin/css/x-admin.css" media="all">
+        <link rel="stylesheet" href="/static/admin/css/2.css" media="all">
+        <link rel="stylesheet" href="/static/admin/css/bootstrap.css" media="all">
+        <script src="/static/admin/js/jquery.min.js" ></script>
+    </head>
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>管理员列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+            <form class="layui-form x-center" action="adminlist" style="width:80%" method="get">
+                <div class="layui-form-pane" style="margin-top: 15px;">
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">性别</label>
+                      <div class="layui-input-inline">
+                            <select class="layui-select" name='sex' value="">
+                                <option value="">请选择用户性别</option>
+                                <option value="m" >男</option>
+                                <option value="w">女</option>
+                            </select>
+                        </div>
+                    <div class="layui-input-inline">
+                      <input type="text" name="admin_name"  placeholder="请输入登录名" autocomplete="off" class="layui-input" value="<?php echo (isset($ob['admin_name']) && ($ob['admin_name'] !== '')?$ob['admin_name']:''); ?>">
+                    </div>
+
+                    <div class="layui-input-inline" style="width:80px">
+                        <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                    </div>
+                  </div>
+                </div> 
+            </form>
+            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><button class="layui-btn" onclick="admin_add('添加用户','adminadd','600','500')"><i class="layui-icon">&#xe608;</i>添加</button>
+            <span class="x-right" style="line-height:40px">共有数据<?php echo $totol; ?> 条</span></xblock>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="" value="">
+                        </th>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            管理员
+                        </th>
+                        <th>
+                            手机号
+                        </th>
+                        <th>
+                            性别
+                        </th>
+                        <th>
+                            角色
+                        </th>
+                        <th>
+                            加入时间
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$ob): $mod = ($i % 2 );++$i;?>
+                    <tr>
+                        <td>
+                            <input type="checkbox" value="<?php echo $ob['id']; ?>" name="id[]">
+                        </td>
+                        <td>
+                            <?php echo $ob['id']; ?>
+                        </td>
+                        <td>
+                            <a title="用户信息查看" href="javascript:;" onclick="admin_show('用户信息','adminshow?<?php echo $ob['id']; ?>.html','','','510')"class="ml-5">
+                              <?php echo $ob['admin_name']; ?></a>
+                        </td>
+                        <td >
+                            <?php echo $ob['phone']; ?>
+                        </td>
+                        <td > <?php if($ob['sex']=='m'): ?>
+                                男
+                            <?php elseif($ob['sex']=='w'): ?>
+                                女
+                            <?php endif; ?></td>
+
+                        <td>
+                            <?php if(($ob['quanxian'] ==1)): ?>普通管理员
+                               <?php else: ?> 超级管理员
+                            <?php endif; ?>
+                        </td> 
+                        <td>
+                          <?php echo date('Y-m-d H:i:s',$ob['addtime']); ?> 
+                        </td>
+
+                        <td class="td-manage">
+                            <a title="编辑" href="javascript:;" onclick="admin_edit('编辑','adminedit?id=<?php echo $ob['id']; ?>','800','510')"
+
+                           class="ml-5" style="text-decoration:none">
+                                <i class="layui-icon">&#xe642;</i>
+                            </a>
+
+                            <a title="删除" href="javascript:;" onclick="admin_del(this,<?php echo $ob['id']; ?>)" 
+                            style="text-decoration:none">
+                                <i class="layui-icon">&#xe640;</i>
+                            </a>
+                        </td>
+                    </tr>
+                  <?php endforeach; endif; else: echo "" ;endif; ?>
+                </tbody>
+
+            </table>
+            <center>  
+                <div class="pagination" ">
+                  <?php echo $list->render(); ?>
+                </div>
+            <center>  
+    </div>
+        <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+
+        <script src="/static/admin/js/x-layui.js" charset="utf-8"></script>
+        <script>
+            layui.use(['laydate','element','laypage','layer','form'], function(){
+                $ = layui.jquery;//jquery
+              laydate = layui.laydate;//日期插件
+              lement = layui.element();//面包导航
+              var form=layui.form();
+              laypage = layui.laypage;//分页
+              layer = layui.layer;//弹出层
+
+
+              //以上模块根据需要引入
+
+              // laypage({
+              //   cont: 'page'
+              //   // ,pages: 100
+              //   // ,first: 1
+              //   // ,last: 100
+              //   // ,prev: '<em><</em>'
+              //   // ,next: '<em>></em>'
+              // }); 
+
+              // //以上模块根据需要引入
+              // var page=$("#page").val();
+              // laypage({
+              //   cont: 'page'
+              //   ,pages:page
+              //   ,first: 1
+              //   ,last: page
+              //   ,prev: '<em><</em>'
+              //   ,next: '<em>></em>'
+              // }); 
+
+              
+              // var start = {
+              //   min: laydate.now()
+              //   ,max: '2099-06-16 23:59:59'
+              //   ,istoday: false
+              //   ,choose: function(datas){
+              //     end.min = datas; //开始日选好后，重置结束日的最小日期
+              //     end.start = datas //将结束日的初始值设定为开始日
+              //   }
+              // };
+              
+              // var end = {
+              //   min: laydate.now()
+              //   ,max: '2099-06-16 23:59:59'
+              //   ,istoday: false
+              //   ,choose: function(datas){
+              //     start.max = datas; //结束日选好后，重置开始日的最大日期
+              //   }
+              // };
+              
+              // document.getElementById('LAY_demorange_s').onclick = function(){
+              //   start.elem = this;
+              //   laydate(start);
+              // }
+              // document.getElementById('LAY_demorange_e').onclick = function(){
+              //   end.elem = this
+              //   laydate(end);
+              // }
+              
+            });
+
+            //批量删除提交
+             function delAll () {
+                layer.confirm('确认要删除吗？',function(index){
+                    //捉到所有被选中的，发异步进行删除
+                     var chk_value =[]; 
+                    $('input[name="id[]"]:checked').each(function(){ 
+                      chk_value.push($(this).val()); 
+                    }); 
+                    console.log(chk_value);
+                    var submit = confirm(chk_value.length==0 ?'你还没有选择任何内容！':'您是否需要将id '+chk_value+'删除'); 
+                    if (submit) {
+                      window.location.href = "/admin/admin/deleteall/id/"+chk_value;
+                      return false;
+                    } else{
+                      return false;
+                    };
+                   
+                });
+             }
+             /*添加*/
+            function admin_add(title,url,w,h){
+                x_admin_show(title,url,w,h);
+            }
+            // function admin_adds(){
+            //    layer.msg('您的权限不够，无法添加！',{icon: 5,time:1000});
+            // }
+             /*用户-查看*/
+            function admin_show(title,url,w,h){
+                x_admin_show(title,url,w,h);
+            }
+
+             /*停用*/
+            function admin_stop(obj,id){
+                layer.confirm('确认要停用吗？',function(index){
+                    //发异步把用户状态进行更改
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="admin_start(this,id)" href="javascript:;" title="启用"><i class="layui-icon">&#xe62f;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-disabled layui-btn-mini">已停用</span>');
+                    $(obj).remove();
+                    layer.msg('已停用!',{icon: 5,time:1000});
+                });
+            }
+
+            /*启用*/
+            function admin_start(obj,id){
+                layer.confirm('确认要启用吗？',function(index){
+                    //发异步把用户状态进行更改
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="admin_stop(this,id)" href="javascript:;" title="停用"><i class="layui-icon">&#xe601;</i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>');
+                    $(obj).remove();
+                    layer.msg('已启用!',{icon: 6,time:1000});
+                });
+            }
+            //编辑
+            function admin_edit (title,url,id,w,h) {
+                x_admin_show(title,url,id,w,h); 
+            }
+            /*删除*/
+            function admin_del(obj,id){
+                
+                layer.confirm('确认要删除吗？',function(index){
+                    //发异步删除数据
+                    // $(obj).parents("tr").remove();
+                    // layer.msg('已删除!',{icon:1,time:1000});
+                       $.get("admindel",{id:id},function(dat){
+                        // alert(dat);
+                        if(dat>0){
+                            
+                            $(obj).parents("tr").remove();
+                            layer.msg('已删除!',{icon:1,time:1000});
+                             location.reload();
+                        }
+                    })
+                });
+              }
+            </script>
+            <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    </body>
+</html>

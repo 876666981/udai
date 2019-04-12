@@ -1,0 +1,291 @@
+<?php
+namespace app\index\controller;
+	use think\Controller;
+    use think\Request;
+    use think\Config;
+    use think\Session;
+    use think\Db;
+
+class Goods extends Controller
+{
+
+     protected $beforeActionList = [
+        'first'
+    ];
+    public function first(){
+         if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+        }
+    }
+    public function item_category(){
+        $list=db('type')->where('pid',0)->select();
+        if (request()->isGet()) {
+            $id=input('get.');
+            $list2=db('type')->where('id',$id['id'])->find();
+            $list3=db('type')->where('pid',$list2['id'])->select(); 
+            $at=array();
+            foreach ($list3 as $k => $v) {
+              $at=db('goods_attr')->field('goods_attr.*')->join('type',"goods_attr.type_id={$v['id']}")->select();  
+            }
+            $ae=$this->super_unique($at);
+            $aq=array();
+	        foreach ($ae as $key => $value) {
+	        	foreach ($value as $k => $v) {
+	        		$aq[]=$value['attr'];
+	        	}
+	        }
+	        $aw=array_unique($aq);
+	        $val=array();
+	        foreach ($ae as $key => $value) {
+	        	$val[]=db('goods_value')->field('goods_value.*')->join('goods_attr',"goods_value.attr_id={$value['id']}")->select();
+	        }
+	        $vv=array();
+	        foreach ($val as $key => $value) {
+	        	foreach ($value as $k => $v) {
+	        		$vv[]=$v;
+	        	}
+	        }
+	        $vv=$this->super_unique($vv);
+	        $vs=$this->array_unset_tt($vv,'value');
+	        $aa=array();
+	        foreach ($ae as $key => $value) {
+	        	foreach ($vs as $k => $v) {
+	        		if ($value['id']==$v['attr_id']) {
+	        			$aa[][$value['attr']]=$v;
+	        		}
+	        	}
+	        }
+        }
+        $ae=$this->super_unique($aws);
+        var_dump($ae);die;
+        $aq=array();
+        foreach ($ae as $key => $value) {
+        	foreach ($value as $k => $v) {
+        		$aq[]=$value['attr'];
+        	}
+        }
+        $aw=array_unique($aq);
+        $val=array();
+        foreach ($ae as $key => $value) {
+        	$val[]=db('goods_value')->field('goods_value.*')->join('goods_attr',"goods_value.attr_id={$value['id']}")->select();
+        }
+        $vv=array();
+        foreach ($val as $key => $value) {
+        	foreach ($value as $k => $v) {
+        		$vv[]=$v;
+        	}
+        }
+        
+        $vv=$this->super_unique($vv);
+        $vs=$this->array_unset_tt($vv,'value');
+        $aa=array();
+        foreach ($ae as $key => $value) {
+        	foreach ($vs as $k => $v) {
+        		if ($value['id']==$v['attr_id']) {
+        			$aa[][$value['attr']]=$v;
+        		}
+        	}
+        } 
+        $shop=array();
+        $shop2=array();
+        $plist=array();
+    	// 产品列表页
+    	  // $goods=db('goods')->join("goods_value","goods.id=goods_value.goods_id")->join("goods_attr","goods.typeid=goods_attr.type_id")->join("goods_img","goods.id=goods_img.goods_id")->field('goods.*,goods_value.*,goods_attr.*,goods_img.*')->select();
+        //爆款推荐
+       	$hot=db('goods')->where('hot','yes')->where('state','1')->select();
+       	$this->assign('hot',$hot);
+        $this->assign('shop2',$shop2);
+       	$this->assign('list',$list);
+       	$this->assign('list3',$list3);
+       	$this->assign('aw',$aw);
+       	$this->assign('aa',$aa);
+        $this->assign('at',$at);
+        return view();
+    }
+	public  function array_unset_tt($arr,$key){       
+        //建立一个目标数组    
+        $res = array();          
+        foreach ($arr as $value) {             
+           //查看有没有重复项    
+           if(isset($res[$value[$key]])){    
+              unset($value[$key]);  //有：销毁    
+           }else{      
+              $res[$value[$key]] = $value;    
+           }      
+        }    
+        return $res;     
+    }    
+    public function super_unique($array, $recursion = false){
+    // 序列化数组元素,去除重复
+	    $result = array_map('unserialize', array_unique(array_map('serialize', $array))); 
+	   // 递归调用
+	    if ($recursion) {
+	        foreach ($result as $key => $value) {
+	            if (is_array($value)) {
+	                $result[ $key ] = super_unique($value);
+	           }
+	        }
+	    }
+	    return $result;
+	}
+    public function item_show(){
+    	// if (empty(Session::has('phone'))) {
+     //        $this->assign('username','登录');
+     //        $this->assign('zc','注册');
+     //        $this->assign('tc','');
+     //        $this->assign('dcdl','点此登录');
+     //        $this->assign('nhao','你好');
+     //        $this->assign('jf','');
+     //    }else{
+     //        $this->assign('username','');
+     //        $this->assign('zc','');
+     //        $this->assign('tc','退出');
+     //        $this->assign('dcdl','');
+     //        $this->assign('nhao','');
+     //        $this->assign('jf','积分');
+     //    }
+        // 爆款推荐
+         $hot=db('goods')->where('hot','yes')->where('state','1')->select();
+         //详情
+         $id=input('id');
+         // 商品表
+         $all=db('goods')->where('id',$id)->find();
+         $pic=$all['img'];
+         
+         $img=explode(",",$pic);
+
+         //商品图片
+         $k=db('goods_img')->where('id',$id)->find();
+         $ko=explode(",",$k['pic']);
+
+         // var_dump($img);
+         // 属性和属性值
+         
+         $color=db('goods_attr')->where('goods_id',$all['id'])->select();
+         // var_dump($color);
+         // $result = db("goods_attr")->distinct(true)->select();
+         // var_dump($result);
+
+         $value=db("goods_value")->select();
+         $comment=db('evaluate')->count();
+         $imd=db("goods_img")->where("goods_id",$id)->find();
+         // var_dump($imd);
+         $k=$imd['pic'];
+         $ko=explode(",",$k);
+         // var_dump($ko);
+        
+        $this->assign('value',$value);
+
+         
+        $val=array();
+         foreach ($color as $key => $value) {
+            $val[]=db("goods_value")->field('goods_value.*')->join('goods_attr',"goods_value.attr_id={$value['id']}")->select();
+         }
+         $colors=$this->array_unset_tt($color,'attr');
+         // var_dump($colors);
+         $vel=array();
+         foreach ($val as $k => $v) {
+             foreach ($v as $key => $vl) {
+                $vel[]=$vl;
+             }
+         }
+       
+         $vel=$this->array_unset_tt($vel,'value');
+         // var_dump($vel);
+         $aa=array();
+         foreach ($color as $key => $value) {
+            foreach ($vel as $k => $v) {
+                if ($value['id']==$v['attr_id']) {
+                    
+                    $aa[][$value['attr']]=$v;
+                }
+            }
+        }
+        
+        $comment=db('evaluate')->count();   
+        $this->assign("aa",$aa);
+
+        $this->assign('ko',$ko);
+        $this->assign('pic',$pic);
+        // $this->assign('aa',$aa);
+        $this->assign('ko',$ko);
+        $this->assign('img',$img);
+        $this->assign('colors',$colors);
+        $this->assign('comment',$comment);
+        $this->assign('all',$all);
+        $this->assign('hot',$hot);
+    	return view();
+    }
+    public function car_insert(){
+            $sid=$_POST['sid']; 
+                 $data = array(
+                'carval'=>$_POST['carval'],  
+                'carnum'=>$_POST['carnum'],    
+                'pid'=>$_POST['pid'],
+                'price'=>$_POST['price'],
+                'goodsname'=>$_POST['goodsname'],
+                'sid'=>$_POST['sid'],
+                'carimg'=>$_POST['carimg'],
+                'stock'=>$_POST['stock']
+                );
+               $un=strlen($data['carval']);
+                $goodcar=db('car_insert')->where('carnum',$data['carnum'])->where('sid',$sid)->find();
+                $num=$data['carnum']+$goodcar['carnum'];
+                 if(!empty($_POST['carval'])&&strlen($data['carval'])>=52&&($goodcar['sid']==$data['sid'])&&($goodcar['carval']==$data['carval'])) {
+                    $s=db('car_insert')->where('sid',$data['sid'])->where('carval',$data['carval'])->setField('carnum',$num);
+                    return $s;
+                 }elseif (!empty($_POST['pid'])&&strlen($data['carval'])>=52) {
+                $m=db('car_insert')->insert($data);
+                return $m;
+             }
+        }
+    public function sc_insert(){
+         $data = array(    
+                'pid'=>$_POST['pid'],
+                'price'=>$_POST['price'],
+                'goodsname'=>$_POST['goodsname'],
+                'sid'=>$_POST['sid'],
+                'carimg'=>$_POST['carimg'],
+                );
+         $id=Session::get('id');
+        $controller=db('Collection')->where('pid',$id)->where('sid',$data['sid'])->find();
+         if (!empty($_POST['pid'])&&empty($controller)) {
+              $m=db('Collection')->insert($data);
+              return $m;
+         }
+    }
+    public function pur_chase(){
+            $data = array(
+                'pid'=>$_POST['pid'],
+                'sid'=>$_POST['sid'],
+                'carval'=>$_POST['carval'],  
+                'carnum'=>$_POST['carnum'],    
+                'price'=>$_POST['price'],
+                'goodsname'=>$_POST['goodsname'],
+                'carimg'=>$_POST['carimg'],
+                'stock'=>$_POST['stock']
+                );
+            $id=Session::get('id');
+            $info=db('Purchase')->where('pid',$id)->select();
+            if (!empty($info)) {
+                db('Purchase')->where('pid',$id)->delete();
+            }
+            if (!empty($id)&&strlen($data['carval'])>=52) {
+                 $m=db('Purchase')->insert($data);
+                 return $m;
+            }
+    }
+     public function shopcar(){
+
+        return view();
+    }
+    public function item_sale_page(){
+    	return view();
+    }
+}

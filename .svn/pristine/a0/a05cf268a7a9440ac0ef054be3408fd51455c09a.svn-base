@@ -1,0 +1,152 @@
+<?php
+// +----------------------------------------------------------------------
+// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: liu21st <liu21st@gmail.com>
+// +----------------------------------------------------------------------
+
+return [
+    '__pattern__' => [
+        'name' => '\w+',
+    ],
+    '[hello]'     => [
+        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
+        ':name' => ['index/hello', ['method' => 'post']],
+    ],
+    //后台
+    'login'	=>	'admin/login/index',	//登录页
+    'adminindex'	=>	'admin/index/index',	//后台首页
+    'welcome'	=>	'admin/index/welcome',	//后台桌面
+    'eliminate'	=>	'admin/login/eliminate',	//退出(清除session)
+    //轮播图
+    'bannerlist'=>'admin/banner/banner_list',
+    'banneradd'=>'admin/banner/banner_add',
+    'banneredit'=>'admin/banner/banner_edit',
+    'bannerdel'=>'admin/banner/banner_del',
+    'bannerinsert'=>'admin/banner/banner_insert',
+    'bannerupdate'=>'admin/banner/banner_update',
+    'bannerstate'=>'admin/banner/banner_state',
+    'banneruploads'=>'admin/banner/banner_uploads',
+    //产品管理
+    'goodslist'=>'admin/goods/goods_list',
+    'goodsadd'=>'admin/goods/goods_add',
+    'goodsinsert'=>'admin/goods/goods_insert',
+    'goodsedit'=>'admin/goods/goods_edit',
+    'goodsupdate'=>'admin/goods/goods_update',
+    'goodsdel'=>'admin/goods/goods_del',
+    'goodsattradd'=>'admin/goods/goods_attr_add',
+    'goodsattrinsert'=>'admin/goods/goods_attr_insert',
+    'goodsattredit'=>'admin/goods/goods_attr_edit',
+    'goodsattrupdate'=>'admin/goods/goods_attr_update',
+    'goodsuploads'=>'admin/goods/goods_uploads',
+    //订单管理
+    'orderlist'=>'admin/order/order_list',
+    //分类管理
+    'classifylist'=>'admin/classify/classify_list',
+    'classifyadd'=>'admin/classify/classify_add',
+    'classifyedit'=>'admin/classify/classify_edit',
+    'classifyadds'=>'admin/classify/classify_adds',
+    'classifyinsert'=>'admin/classify/classify_insert',
+    'classifyinserts'=>'admin/classify/classify_inserts',
+    'classifydel'=>'admin/classify/classify_del',
+    'classifyupdate'=>'admin/classify/classify_update',
+    //评论管理
+    'commentlist'=>'admin/comment/comment_list',
+    'commentedit'=>'admin/comment/comment_edit',
+    'commentupdate'=>'admin/comment/comment_update',
+    'feedbacklist'=>'admin/comment/feedback_list',
+    //会员管理
+    'memberlist'=>'admin/member/member_list',
+    'memberadd'=>'admin/member/member_add',
+    'memberinsert' => 'admin/member/insert',
+    'memberstate'=>'admin/member/state',
+    "membershow" => 'admin/member/member_show',
+    //管理员管理
+    'adminlist'=>'admin/admin/admin_list',
+    'adminrole'=>'admin/admin/admin_role',
+    'adminrule'=>'admin/admin/admin_rule',
+    'admininsert' => 'admin/admin/admin_insert',
+    "admindel" => 'admin/admin/admin_del',
+    "adminadd" => 'admin/admin/admin_add',
+    "adminedit" => 'admin/admin/admin_edit',
+    "adminupdate" => 'admin/admin/admin_update',
+    "adminshow" => 'admin/admin/admin_show',
+    "roleadd" => 'admin/admin/role_add',
+    "roleinsert" => 'admin/admin/role_insert',
+    "roleedit" => 'admin/admin/role_edit',
+    "roleupdate" => 'admin/admin/role_update',
+    "roledel" => 'admin/admin/role_del',
+    "ruleadd" => 'admin/admin/rule_add',
+    "ruleinsert" => 'admin/admin/rule_insert',
+    "ruleedit" => 'admin/admin/rule_edit',
+    "ruleupdate" => 'admin/admin/rule_update',
+    "ruledel" => 'admin/admin/rule_del',
+   
+    //前台
+    'udindex'   =>  'index/index/index',    //首页
+    
+    //首页
+    'register'  =>  'index/index/register', //注册页
+    'doregister'    =>  'index/index/do_register',  //执行注册
+    'sendcode'  =>  'index/index/sendCode', //短信验证码
+    'udlogin'   =>  'index/index/login',    //登录页
+    'emptysession'  =>  'index/index/emptysession', //清除session
+    'resetpwd'  =>  'index/index/resetpwd',   //忘记密码
+    'doresetpwd'    =>  'index/index/do_resetpwd',
+    'udaiwelcome'  =>  'index/index/udai_welcome', //用户中心
+    'udaisetting'  =>  'index/personal/udai_setting',  //个人资料
+    'udaiupdate'    =>  'index/personal/udai_update',   //个人资料修改
+    'headupdate'    =>  'index/personal/head_update',
+    'udaiaddress'   =>  'index/personal/udai_address',  //收货地址
+    'addaddress'    =>  'index/personal/add_address',//添加收货地址
+    'editaddress'   =>  'index/personal/udai_editaddress',//修改收货
+    'updateaddress' => 'index/personal/udai_updateaddress',
+    'udaidel'   =>   'index/personal/udai_del',//删除收货地址
+    'defaultaddress'    =>  'index/personal/default_address',//默认收货
+    'agentlevel' => 'index/index/agent_level',
+    'udaishopcart' => 'index/index/udai_shopcart',//购物车
+    'delcar'    =>  'index/index/car_del',
+    'numadd'    =>  'index/index/num_add',//购物车数量增加
+    'numsup'    => 'index/index/num_sup',
+    'classroom' => 'index/index/class_room',
+    'enterpriseid' => 'index/index/enterprise_id',
+    'udaicontract' => 'index/index/udai_contract',
+    'itemremove' => 'index/index/item_remove',
+    'issues' => 'index/index/issues',//留言反馈
+    'udaiabout' => 'index/index/udai_about',//联系我们
+
+    //商品页
+    'itemcategory' => 'index/goods/item_category',//积分平台
+    'itemshow' => 'index/goods/item_show',
+    'itemsalepage' => 'index/goods/item_sale_page',
+    'carinsert' =>  'index/goods/car_insert',
+
+    //个人中心页
+    'udaiintegral' => 'index/personal/udai_integral',//积分平台
+    'udaitreasurer' => 'index/personal/udai_treasurer',//资金管理
+    'udaicoupon' => 'index/personal/udai_coupon',//优惠券
+    'udaipaypwdmodify' => 'index/personal/udai_paypwd_modify',//修改支付密码
+    'udaipwdmodify' => 'index/personal/udai_pwd_modify',//修改登录密码
+    'udaicollection' => 'index/personal/udai_collection',//我的收藏
+    'udaiorder' => 'index/personal/udai_order',//我的订单
+    'udairefund' => 'index/personal/udai_refund',//退款/退货
+    'udaimailquery' => 'index/personal/udai_mail_query',//物流查询
+    'udaimodifypaystep1' => 'index/personal/udai_modifypay_step1',
+    'udaiarticle1' => 'index/personal/udai_article1',//售后服务
+    'udaiarticle2' => 'index/personal/udai_article2',//配送服务
+    'udaiarticle3' => 'index/personal/udai_article3  ',//用户协议
+    'udaiarticle4' => 'index/personal/udai_article4',//常见问题
+    'udaiarticle5' => 'index/personal/udai_article5',//如何成为代理商
+    'udaiarticle6' => 'index/personal/udai_article6',//代销商上架教程
+    'udaiarticle7' => 'index/personal/udai_article7',//分销商常见问题
+    'udaiarticle8' => 'index/personal/udai_article8',//付款账户
+    'udaiarticle9' => 'index/personal/udai_article9',
+    'udaiarticle10' => 'index/personal/udai_article10',//企业简介
+    'udaiarticle11' => 'index/personal/udai_article11',//加入U袋
+    'udaiarticle12' => 'index/personal/udai_article12',//隐私说明
+
+];

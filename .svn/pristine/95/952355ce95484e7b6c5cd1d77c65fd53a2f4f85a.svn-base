@@ -1,0 +1,355 @@
+<?php
+    namespace app\index\controller;
+    use think\Controller;
+    use think\Request;
+    use think\Config;
+    use think\Session;
+
+class Index extends Controller
+
+{
+    public function index()
+    {   
+          //搜索
+        $gets=input("get.");
+        $goods_name=input("get.goods_name");
+        $this->assign("goods_name", $goods_name);   
+        //爆款
+        $hoot=db('type')->where('pid=0 ')->order('id asc')->select();
+        $list=db('goods,type')->field("goods.*,type.name")->where("goods.typeid=type.id")->where("hot","yes")->where('goods_name','like','%'.$goods_name.'%')->where("state","1")->select();
+        //女装:1楼
+        // 类别
+       $app=db('type')->field('id,name,pid,path')->where("pid=0")->where("path","0,1")->find();
+       // var_dump($app);die;
+       $aps=db("type")->field('id,name,pid,path')->where("pid",$app['id'])->select();
+       //商品
+        $shop=db('goods,type')->field("goods.*,type.name")->where("goods.typeid=type.id")->where("floor","1")->where('goods_name','like','%'.$goods_name.'%')->where("state","1")->select();
+
+        //男装:2楼
+        // 类别
+        $sps=db('type')->field('id,name,pid,path')->where("pid=0")->where("path","0,2")->find();
+        $das=db("type")->field('id,name,pid,path')->where("pid",$sps['id'])->select();
+        //商品
+        $hop=db('goods,type')->field("goods.*,type.name")->where("goods.typeid=type.id")->where("floor","2")->where('goods_name','like','%'.$goods_name.'%')->where("state","1")->select();
+
+         //童装:3楼
+        // 类别
+        $hps=db('type')->field('id,name,pid,path')->where("pid=0")->where("path","0,3")->find();
+        $kas=db("type")->field('id,name,pid,path')->where("pid",$hps['id'])->  select();
+         //商品
+        $nop=db('goods,type')->field("goods.*,type.name")->where("goods.typeid=type.id")->where("floor","3")->where('goods_name','like','%'.$goods_name.'%')->where("state","1")->select();
+        
+        //包包:4楼
+        // 类别
+        $px=db('type')->field('id,name,pid,path')->where("pid=0")->where("path","0,5")->find();
+        $kms=db("type")->field('id,name,pid,path')->where("pid",$px['id'])->select();
+        $nsp=db('goods,type')->field("goods.*,type.name")->where("goods.typeid=type.id")->where('goods_name','like','%'.$goods_name.'%')->where("floor","4")->where("state","1")->select();
+
+         //鞋:5楼
+        // 类别
+        $dok=db("type")->field('id,name,pid,path')->where("pid=0")->where("path","0,4")->find();
+        $haps=db("type")->field('id,name,pid,path')->where("pid",$dok['id'])->select();
+        $esp=db('goods,type')->field("goods.*,type.name")->where("goods.typeid=type.id")->where('goods_name','like','%'.$goods_name.'%')->where("floor","5")->where("state","1")->select();
+        //1
+        $this->assign("app", $app);
+        $this->assign("aps", $aps);
+        $this->assign("shop",$shop);
+        //2
+        $this->assign("sps", $sps);
+        $this->assign("das", $das);
+        $this->assign("hop",$hop);
+        //3
+        $this->assign("hps", $hps);
+        $this->assign("kas", $kas);
+        $this->assign("nop", $nop);
+        //4
+        $this->assign("px", $px);
+        $this->assign("kms", $kms);
+        $this->assign("nsp", $nsp);
+        //5
+        $this->assign("dok", $dok);
+        $this->assign("haps", $haps);
+        $this->assign("esp", $esp);
+
+        $this->assign("hoot", $hoot); 
+        $this->assign("list", $list);
+        if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+            $this->assign('dcdl','点此登录');
+            $this->assign('fxgd','，发现更多精彩');
+            $this->assign('nhao','你好');
+            $this->assign('jf','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+            $this->assign('dcdl','');
+            $this->assign('fxgd','');
+            $this->assign('nhao','');
+            $this->assign('jf','积分');
+        }
+        //轮播图
+    	$ban=db('banner')->select();
+    	$this->assign('ban',$ban);
+        //分类
+        
+        // $plist=db('type')->where('pid',0)->select();
+        // $plist2=array();
+        // $plist3=array();
+        // foreach ($plist as $k => $v) {
+        //     $plist[$k]['child']=array();
+        //     $plist2=db('type')->where('pid',$v['id'])->select();
+        $plist=db('type')->where('pid',0)->select();
+        $plist2=array();
+        $plist3=array();
+        foreach ($plist as $k => $v) {
+            $plist[$k]['child']=array();
+            $plist2=db('type')->where('pid',$v['id'])->select();
+            foreach ($plist2 as $key => $value) {
+                array_push($plist[$k]['child'],$plist2);
+                $plist[$k]['child'][$key]['child2']=array(); 
+                $plist3=db('type')->where('pid',$value['id'])->select();
+                foreach ($plist3 as $v2) {
+                     array_push($plist[$k]['child'][$key]['child2'],$v2);
+                }            
+        //     foreach ($plist2 as $key => $value) {
+        //         array_push($plist[$k]['child'],$plist2);
+        //         $plist[$k]['child'][$key]['child2']=array(); 
+        //         $plist3=db('type')->where('pid',$value['id'])->select();
+        //         foreach ($plist3 as $v2) {
+        //              array_push($plist[$k]['child'][$key]['child2'],$v2);
+        //         }
+               
+            }
+        }
+        $this->assign('plist',$plist);
+        //     }
+        // }
+        // $this->assign('plist',$plist);
+       
+        $a = db("type")->where('pid','0')->select();
+        $b = [];
+        $c = []; 
+        foreach ($a as $k => $v) {
+        //定义一个空数组为二级分类的名字
+            $a[$k]['child'] = [];
+            //查询二级分类。条件为父id等于等级分类的id
+            $b = db("type")->where('pid',$v['id'])->select();
+                foreach ($b as $k1 => $v1) {
+                //把查询出来的结果合并到定义的数组中，合并一级二级分类
+                array_push($a[$k]['child'], $v1);
+                // var_dump($v1);die;
+                //再定义一个数组为三级分类的名字
+                $a[$k]['child'][$k1]['chlid2'] = [];
+                //获取三级分类的信息
+                $c = db("type")->where('pid',$v1['id'])->select();
+                    foreach ($c as $v2) {
+                    //合并一级二级三级分类
+                     array_push($a[$k]['child'][$k1]['chlid2'], $v2);
+                     // var_dump($v2);
+                    }
+                }
+        }
+       // var_dump($b);
+        
+       if (!empty(Session::has('phone'))) {
+            $id=Session::get('id');
+            $user=db('user')->where("id",$id)->find();
+            $this->assign("user",$user);
+       }else{
+             $this->assign("user",123);
+       }
+		// $this->assign("add",$add);
+        $this->assign("a",$a);
+        return view();
+
+    }
+    public function emptysession(){
+        Session::delete('phone');
+        Session::delete('id');
+        $this->redirect('index/index/index');
+    }
+    public function login(){
+    	return view();
+    }
+    public function do_udlogin(){
+            if (Request::instance()->isPost()) { //判断是否为 POST 请求  
+            $data = input('post.');
+            $phone = $data['phone'];  
+            $password = md5($data['password']);
+            //查询数据试库  
+            $where['phone'] = $phone;
+            $userInfo = db('user')->where($where)->find();
+            // var_dump($userInfo);
+            if ($userInfo && $userInfo['password'] == $password) {
+                // 登录成功写入session
+                Session::set('phone', $userInfo['phone']);
+                Session::set('id',$userInfo['id']);
+                return 'OK';
+            }
+        }
+    }
+    public function register(){
+    	return view();
+    }
+    public function do_register(){
+        if (Request::instance()->isPost()) {
+            // dump(input('post.'));
+            $list = input('post.');
+            $smscode = $list['smscode'];
+            $phone = $list['phone'];
+            $where['phone'] = $phone;
+            $userInfo = db('user')->where($where)->find();
+            // var_dump($userInfo);
+            if ($userInfo['phone'] == $phone) {
+                return "sj";
+            }elseif ($smscode==code()) {
+                $data = [       //接受传递的参数  
+                    'phone' => input('phone'),  
+                    'password' => md5(input('password')),
+                    'time' => time(),
+                ];
+                $info = db('user')->insert($data);
+                return "OK";
+            }
+           
+            // var_dump($data);
+        }
+    }
+    public function sendCode(){
+        $tel=input('tel');
+        // echo $tel;
+        $host = "https://feginesms.market.alicloudapi.com";
+        $path = "/codeNotice";
+        $method = "GET";
+        $appcode = "4a53f8c8d15b403595c6ea288c940c4d";
+        $headers = array();
+        array_push($headers, "Authorization:APPCODE " . $appcode);
+        $querys = "param=".code()."&phone={$tel}&sign=1&skin=1";
+        $bodys = "";
+        $url = $host . $path . "?" . $querys;
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_FAILONERROR, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        if (1 == strpos("$".$host, "https://"))
+        {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        }
+        // var_dump(curl_exec($curl));
+        $json=curl_exec($curl);
+        $info=json_decode($json,true);
+        // echo $info;
+        if ($info['Code']=='OK') {
+            return 1;
+        }
+    }
+    public function resetpwd(){
+    	return view();
+    }
+    public function do_resetpwd(){
+        if (Request::instance()->isPost()) {
+            $list = input('post.');
+            $smscode = $list['smscode'];
+            $phone = $list['phone'];
+            $where['phone'] = $phone;
+            $userInfo = db('user')->where($where)->find();
+            if (($userInfo['phone'] !== $phone)) {
+                return "NO";
+            }elseif (($userInfo['phone'] == $phone) && ($smscode==code())) {
+                $data = [       //接受传递的参数  
+                    'password' => md5(input('password')),
+                ];
+                $info = db('user')->where($where)->update($data);
+                return "OK";
+            }
+           
+            // var_dump($data);
+        }
+    }
+    public function agent_level(){
+    	return view();
+    }
+    public function udai_welcome(){
+    if (empty(Session::has('phone'))) {
+            $this->assign('tc','');
+            $this->redirect('index/index/login');   //重定向
+        }else{
+            $this->assign('tc','退出');
+        }
+        $id=Session::get('id');
+        $user=db('user')->where("id",$id)->find();
+        $this->assign("user",$user);
+    	return view();
+    }
+     public function udai_integral(){
+    	return view();
+    }
+     public function udai_shopcart(){
+         if (empty(Session::has('phone'))) {
+            $this->assign('username','登录');
+            $this->assign('zc','注册');
+            $this->assign('tc','');
+        }else{
+            $this->assign('username','');
+            $this->assign('zc','');
+            $this->assign('tc','退出');
+        }
+        $id=Session::get('id');
+        $goodcar=db('car_insert')->where('pid',$id)->select();
+        // var_dump($goodcar);
+        $this->assign('goodcar',$goodcar);
+    	return view();
+    }
+    public function num_add(){
+        $id=input('id');
+        // var_dump($id);
+        $info=db('car_insert')->where('id',$id)->select();
+        $fei=$info[0]['carnum'];
+        $num=$fei+1;
+        // var_dump($num);
+        $m=db('car_insert')->where('id',$id)->update(['carnum'=>$num]);
+    }
+    public function num_sup(){
+         $id=input('id');
+        // var_dump($id);
+        $info=db('car_insert')->where('id',$id)->select();
+        $fei=$info[0]['carnum'];
+        if ($fei>1) {
+            $num=$fei-1;
+        }
+        // var_dump($num);
+        $m=db('car_insert')->where('id',$id)->update(['carnum'=>$num]);
+    }
+    public function car_del(){
+            $id=input('id');
+            $m=db('car_insert')->delete($id);
+            // $this->assign('id',$id);
+            return $m;
+    }
+     public function class_room(){
+    	return view();
+    }
+     public function enterprise_id(){
+    	return view();
+    }
+     public function udai_contract(){
+    	return view();
+    }
+     public function item_remove(){
+    	return view();
+    }
+    public function issues(){
+    	return view();
+    }
+     public function udai_about(){
+    	return view();
+    }
+}

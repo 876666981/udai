@@ -1,0 +1,58 @@
+<?php
+namespace app\index\controller;
+use think\Controller;
+
+class Goods extends Controller
+{
+    public function item_category(){
+    	// $this->assign();
+
+    	// 产品列表页
+    	  // $goods=db('goods')->join("goods_value","goods.id=goods_value.goods_id")->join("goods_attr","goods.typeid=goods_attr.type_id")->join("goods_img","goods.id=goods_img.goods_id")->field('goods.*,goods_value.*,goods_attr.*,goods_img.*')->select();
+        
+        //爆款推荐
+       $hot=db('goods')->where('hot','yes')->where('state','1')->select();
+       $this->assign('hot',$hot);
+        return view();
+    }
+    public function item_show(){
+        // 爆款推荐
+        
+         $hot=db('goods')->where('hot','yes')->where('state','1')->select();
+         //详情
+         $id=input('id');
+         // 商品表
+         $all=db('goods')->where('id',$id)->find();
+
+         $pic=$all['img'];
+         halt($pic);
+         // for($i = 0;$i<count($pic);$i++){
+         //     echo $pic[$i]; 
+         // };
+        // print_r($pic);echo "</br>";  
+          // dump($all);
+         // 属性和属性值
+         $color=db('goods_attr')->where('goods_id',$all['id'])->select();
+         $value=db("goods_value")->select();
+         $comment=db('evaluate')->count();
+        
+        $this->assign('value',$value);
+        $this->assign('pic',$pic);
+        // $this->assign('i',$i);
+
+
+
+        $this->assign('color',$color);
+        $this->assign('comment',$comment);
+        $this->assign('all',$all);
+        $this->assign('hot',$hot);
+    	return view();
+    }
+     public function shopcar(){
+
+        return view();
+    }
+    public function item_sale_page(){
+    	return view();
+    }
+}

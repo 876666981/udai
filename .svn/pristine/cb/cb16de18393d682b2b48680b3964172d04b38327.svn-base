@@ -1,0 +1,14 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Member extends Controller{
+		public function memberlist(){
+			return view();
+		}
+		public function memberadd(){
+			return view("memberadd");
+		}
+		public function memberedit(){
+			return view("memberedit");
+		}
+	}

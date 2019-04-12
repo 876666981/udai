@@ -1,0 +1,23 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	class Admin extends Controller{
+		public function adminlist(){
+			return view();
+		}
+		public function adminadd(){
+			return view();
+		}
+		public function adminedit(){
+			return view();
+		}
+		public function admincate(){
+			return view();
+		}
+		public function adminrole(){
+			return view();
+		}
+		public function adminrule(){
+			return view();
+		}
+	}

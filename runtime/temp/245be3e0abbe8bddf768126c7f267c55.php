@@ -1,0 +1,171 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:68:"/home/wwwroot/udai/public/../application/index/view/index/login.html";i:1530155578;}*/ ?>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/static/index/favicon.ico">
+	<link rel="stylesheet" href="/static/index/css/iconfont.css">
+	<link rel="stylesheet" href="/static/index/css/global.css">
+	<link rel="stylesheet" href="/static/index/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/index/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/static/index/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/static/index/css/sweetalert.css"/>
+	<script src="/static/index/js/jquery.1.12.4.min.js" charset="UTF-8"></script>
+	<script src="/static/index/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script src="/static/index/js/jquery.form.js" charset="UTF-8"></script>
+	<script src="/static/index/js/global.js" charset="UTF-8"></script>
+	<script src="/static/index/js/login.js" charset="UTF-8"></script>
+	<script src="/static/index/js/sweetalert.min.js" charset="UTF-8"></script>
+	<title>U袋网 - 登录</title>
+</head>
+<body>
+	<div class="public-head-layout container">
+		<a class="logo" href="udindex"><img src="/static/index/images/icons/logo.jpg" alt="U袋网" class="cover"></a>
+	</div>
+	<div style="background:url(/static/index/images/login_bg.jpg) no-repeat center center; ">
+		<div class="login-layout container">
+			<div style="width:400px;height:400px;border:1px solid white;border-radius:5px;float:right;margin-top:10px;background-color:#fff;">
+				<div style="width:300px;height:300px;margin:30px auto;">
+				<div class="tabs-nav">
+					<h2>欢迎登录U袋网平台</h2>
+				</div>
+				<div class="tabs_container">
+					<form class="tabs_form" onsubmit="return dologin(this)">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+								</div>
+								<input class="form-control phone" name="phone" id="login_phone" required="" placeholder="手机号" maxlength="11" autocomplete="off" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+								</div>
+								<input class="form-control password" name="password" id="login_pwd" placeholder="请输入密码" autocomplete="off" type="password">
+								<div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
+							</div>
+						</div>
+						<div class="checkbox">
+	                        <a href="resetpwd" class="pull-right">忘记密码？</a>
+	                    </div>
+	                    <!-- 错误信息 -->
+						<div class="form-group">
+							<div class="error_msg" id="login_error"></div>
+						</div>
+						<input name="act" value="login_acc" type="hidden">
+                        <input name="from" id="from" value="L2luZGV4LnBocA==" type="hidden">
+	                  <!--   <button class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit" data-loading-text="登录中..." type="button">登录</button> -->
+	                  <input class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit" data-loading-text="登录中..." type="submit" value="登录">
+	                    <br>
+	                    <p class="text-center">没有账号？<a href="register">免费注册</a></p>
+                    </form>
+                    <div class="tabs_div">
+	                    <div class="success-box">
+	                    	<div class="success-msg">
+								<i class="success-icon"></i>
+	                    		<p class="success-text">登录成功</p>
+	                    	</div>
+	                    </div>
+	                    <div class="option-box">
+	                    	<div class="buts-title">
+	                    		现在您可以
+	                    	</div>
+	                    	<div class="buts-box">
+	                    		<button role="button" class="btn btn-block btn-lg btn-default go-from">继续访问平台</button>
+								<a role="button" href="udai_welcome" class="btn btn-block btn-lg btn-info">登录会员中心</a>
+	                    	</div>
+	                    </div>
+                    </div>
+                </div>
+                </div>
+			</div>
+			<script>
+				$(document).ready(function() {
+					// 发送验证码事件
+					$('.getsms').click(function() {
+						var phone = $(this).parents('form').find('input.phone');
+						var error = $(this).parents('form').find('.error_msg');
+						switch(phone.validatemobile()) {
+							case 0:
+								// 短信验证码的php请求
+								error.html(msgtemp('验证码 <strong>已发送</strong>','alert-success'));
+								$(this).rewire(60);
+							break;
+							case 1: error.html(msgtemp('<strong>手机号码为空</strong> 请输入手机号码',    'alert-warning')); break;
+							case 2: error.html(msgtemp('<strong>手机号码错误</strong> 请输入11位数的号码','alert-warning')); break;
+							case 3: error.html(msgtemp('<strong>手机号码错误</strong> 请输入正确的号码',  'alert-warning')); break;
+						}
+					});
+					// 以下确定按钮仅供参考
+					$('.submit').click(function() {
+						var form = $(this).parents('form')
+						var phone = form.find('input.phone');
+						var pwd = form.find('input.password');
+						var error = form.find('.error_msg');
+						var success = form.siblings('.tabs_div');
+						var options = {
+							beforeSubmit: function () {
+								console.log('喵喵喵')
+							},
+							success: function (data) {
+								console.log(data)
+							}
+						}
+						// 验证手机号参考这个
+						switch(phone.validatemobile()) {
+							case 1: error.html(msgtemp('<strong>手机号码为空</strong> 请输入手机号码',    'alert-warning')); return false; break;
+							case 2: error.html(msgtemp('<strong>手机号码错误</strong> 请输入11位数的号码','alert-warning')); return false; break;
+							case 3: error.html(msgtemp('<strong>手机号码错误</strong> 请输入正确的号码',  'alert-warning')); return false; break;
+						}
+						// 验证密码复杂度参考这个
+						switch(pwd.validatepwd()) {
+							case 1: error.html(msgtemp('<strong>密码不能为空</strong> 请输入密码',    'alert-warning')); return false; break;
+							case 2: error.html(msgtemp('<strong>密码过短</strong> 请输入6位以上的密码','alert-warning')); return false; break;
+							case 3: error.html(msgtemp('<strong>密码过于简单</strong><br>密码需为字母、数字或特殊字符组合',  'alert-warning')); return false; break;
+						}
+						form.ajaxForm(options);
+						// 请求成功执行类似这样的事件
+						// form.fadeOut(150,function() {
+						// 	success.fadeIn(150);
+						// });
+					})
+				});
+
+				function dologin(form){
+			            $.ajax({
+			                url:"<?php echo url('do_udlogin'); ?>",
+			                type:"post",
+			                data:$(form).serialize(),
+			                dataType:"json",
+			                async:true,
+			                success:function(data){
+			                	if (data=="NO") {
+			                		swal("OMG!", "账号已被停用！", "error");
+			                	}else if(data == "OK"){
+			                        window.location.href="udindex";
+			                    }
+			                },
+			                error:function(){
+			                	swal("OMG!", "用户名或密码错误", "error");
+			                	// alert("用户名或密码错误");
+			                }
+			            });
+			             return false;
+		        }
+			</script>
+		</div>
+	</div>
+
+	<div class="footer-login container clearfix">
+		
+		<!-- 版权 -->
+		<p class="copyright">
+			© 2005-2017 U袋网 版权所有，并保留所有权利<br>
+			ICP备案证书号：闽ICP备16015525号-2&nbsp;&nbsp;&nbsp;&nbsp;福建省宁德市福鼎市南下村小区（锦昌阁）1栋1梯602室&nbsp;&nbsp;&nbsp;&nbsp;Tel: 18650406668&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 18650406668@qq.com
+		</p>
+	</div>
+</body>
+</html>

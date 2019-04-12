@@ -1,0 +1,77 @@
+<?php
+	namespace app\admin\controller;
+	use think\Controller;
+	use think\Request;
+	class Goods extends Controller{
+		public function goodslist(){
+			$list=db('goods')->paginate  (3);
+        	$this->assign('list',$list);  
+        	return $this->fetch('goods/goodslist');	
+		}
+		public function insert(){
+			$list['id']=input('id');
+			$list['addtime']=date('Y-m-d H:i:s',time());
+			$list['name']=input('name');
+			$list['pid']=input('pid');
+			$list['describe']=input('describe');
+			$list['price']=input('price');
+			$list['total']=input('total');
+			$list['state']=input('state');
+			$file=$this->request->file("img");
+        	$info = $file->move(ROOT_PATH . 'public' . DS .'static' . DS .'uploads');
+        	if($info){
+            // 成功上传后 获取上传信息
+           	echo $info->getFilename()."<br>";
+      		  }else{
+            // 上传失败获取错误信息
+            echo $file->getError();
+        }
+       		$list['img']= $info->getFilename();
+			$add=db("goods")->insert($list);
+
+		}
+		public function goodsadd(){
+			return $list;
+		}
+		public function goodsedit(){
+			$id=input('id');
+			$list=db('goods')->where('id',$id)->find();
+        	$this->assign('list',$list);  
+        	return $this->fetch('goods/goodsedit');	
+		}
+		public function update(){
+			
+			$add=db('goods')->where('id',input('id'))->delete();
+			$file=$this->request->file("img");
+        	$info = $file->move(ROOT_PATH . 'public' . DS .'static' . DS .'uploads');
+        	if($info){
+            // 成功上传后 获取上传信息
+           	echo $info->getFilename()."<br>";
+      		  }else{
+            // 上传失败获取错误信息
+            echo $file->getError();
+        }
+        	$list['id']=input('id');
+			$list['name']=input('name');
+			$list['pid']=input('pid');
+			$list['describe']=input('describe');
+			$list['price']=input('price');
+			$list['total']=input('total');
+			$list['state']=input('state');
+       		$list['img']= $info->getFilename();
+       		$add=db('goods')->where('id',$list['id'])->update($list);
+
+		}
+		public function goodsdel()
+		{
+		$id=input('id');
+		$e=db('goods')->where('id',$id)->delete();
+		}
+		public function category(){
+			return view();
+		}
+		public function goodsshow(){
+			return view();
+		}
+
+	}

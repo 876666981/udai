@@ -1,0 +1,118 @@
+<?php
+namespace app\index\controller;
+use think\Controller;
+use think\Request;
+class Personal extends Controller
+{
+    public function udai_setting(Request $res){
+        $user=db('user')->find($res->param('id'));
+        // var_dump($user);
+        $this->assign("user",$user);
+        return view();
+    }
+    public function udai_update(){
+        $list=input('post.');
+        $m=db('user')->update($list);
+        return $m;
+    }
+    public function head_update(){
+            $list=input('post.');
+            var_dump($list);
+            $img=db('user')->where('id',$list['id'])->find();
+            $picname=$img['imgname'];
+            if ($list['imgname']!=$picname) {
+                $num=db('user')->where('id',$list['id'])->update($list);
+                if ($num>0) {
+                    if (file_exists("uploads/{$picname}")) {
+                        unlink("uploads/{$picname}");
+                        return $num;
+                    }
+                }
+            }else{
+                $list['imgname']=$picname;
+                $num=db('user')->where('id',$list['id'])->update($list);
+                return $num;
+            }
+    }
+    public function head_updates(){
+        $file=$this->request->file("imgname");
+        // $file=input('pic');
+        var_dump($file);
+        $info=$file->move(ROOT_PATH . 'public' . DS . 'uploads');
+        if($info){
+            return $info->getSaveName()."<br>";
+        }else{
+            // 上传失败获取错误信息
+            return $file->getError();
+        }
+    }
+    public function udai_treasurer(){
+    	return view();
+    }
+    public function udai_integral(){
+    	return view();
+    }
+    public function udai_address(){
+    	return view();
+    }
+    public function udai_coupon(){
+    	return view();
+    }
+    public function udai_paypwd_modify(){
+    	return view();
+    }
+    public function udai_pwd_modify(){
+    	return view();
+    }
+    public function udai_collection(){
+    	return view();
+    }
+    public function udai_order(){
+    	return view();
+    }
+    public function udai_refund(){
+    	return view();
+    }
+    public function udai_mail_query(){
+    	return view();
+    }
+     public function udai_modifypay_step1(){
+    	return view();
+    }
+     public function udai_article1(){
+        return view();
+    }
+    public function udai_article2(){
+        return view();
+    }
+    public function udai_article3(){
+        return view();
+    }
+    public function udai_article4(){
+        return view();
+    }
+    public function udai_article5(){
+        return view();
+    }
+    public function udai_article6(){
+        return view();
+    }
+    public function udai_article7(){
+        return view();
+    }
+    public function udai_article8(){
+        return view();
+    }
+    public function udai_article9(){
+        return view();
+    }
+    public function udai_article10(){
+        return view();
+    }
+    public function udai_article11(){
+        return view();
+    }
+    public function udai_article12(){
+        return view();
+    }
+}
